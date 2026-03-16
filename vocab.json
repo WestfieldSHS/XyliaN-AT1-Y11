@@ -1,0 +1,288 @@
+{
+  "condemn": {
+    "type": "verb",
+    "definition": "to officially declare a building unsafe to live in",
+    "example": "The council condemned the old warehouse after the roof collapsed."
+  },
+  "demolish": {
+    "type": "verb",
+    "definition": "to knock down or destroy a building",
+    "example": "They demolished the factory to make space for new apartments."
+  },
+  "develop": {
+    "type": "verb",
+    "definition": "to build or improve land or property",
+    "example": "The company plans to develop the empty lot into a shopping centre."
+  },
+  "devise": {
+    "type": "verb",
+    "definition": "to invent or create a plan, method, or device",
+    "example": "The architect devised a clever cooling system for the house."
+  },
+  "maintain": {
+    "type": "verb",
+    "definition": "to keep something in good condition",
+    "example": "Tenants must maintain the property to avoid extra fees."
+  },
+  "occupy": {
+    "type": "verb",
+    "definition": "to live in or use a space",
+    "example": "No one has occupied the building since it was declared unsafe."
+  },
+  "reconstruct": {
+    "type": "verb",
+    "definition": "to build something again after it has been damaged",
+    "example": "The team reconstructed the bridge using stronger materials."
+  },
+  "renovate": {
+    "type": "verb",
+    "definition": "to repair and improve a building to make it new again",
+    "example": "They renovated the apartment before moving in."
+  },
+  "structure": {
+    "type": "noun",
+    "definition": "something that has been built, such as a building or bridge",
+    "example": "The structure was strong enough to support heavy loads."
+  },
+  "frame": {
+    "type": "noun",
+    "definition": "the supporting skeleton of a building",
+    "example": "The steel frame allowed the skyscraper to reach new heights."
+  },
+  "construction": {
+    "type": "noun",
+    "definition": "the process of building something",
+    "example": "Construction of the new stadium will take two years."
+  },
+  "timber": {
+    "type": "noun",
+    "definition": "wood prepared for building",
+    "example": "The cottage was built entirely from local timber."
+  },
+  "steel": {
+    "type": "noun",
+    "definition": "a strong metal used in modern construction",
+    "example": "Steel beams support the weight of the high-rise building."
+  },
+  "hoist": {
+    "type": "verb",
+    "definition": "to lift something heavy, usually with ropes or machinery",
+    "example": "Workers hoisted the platform to the upper level."
+  },
+  "hauling": {
+    "type": "verb",
+    "definition": "pulling or transporting something heavy",
+    "example": "The system was designed for hauling goods between floors."
+  },
+  "lift shaft": {
+    "type": "noun",
+    "definition": "the vertical passage in which an elevator moves",
+    "example": "The engineers inspected the lift shaft for safety issues."
+  },
+  "tension": {
+    "type": "noun",
+    "definition": "the tightness or strain in a rope, cable, or material",
+    "example": "If the cable loses tension, the safety device activates."
+  },
+  "trigger": {
+    "type": "verb",
+    "definition": "to cause something to start or activate",
+    "example": "A slack rope would trigger the safety mechanism."
+  },
+  "device": {
+    "type": "noun",
+    "definition": "a piece of equipment designed for a specific purpose",
+    "example": "Otis invented a device that prevented elevators from falling."
+  },
+  "internal": {
+    "type": "adjective",
+    "definition": "located inside something",
+    "example": "The building’s internal frame supported the entire structure."
+  },
+  "landmark": {
+    "type": "noun",
+    "definition": "a building or structure that is easily recognisable",
+    "example": "Skyscrapers often become landmarks in major cities."
+  },
+  "innovation": {
+    "type": "noun",
+    "definition": "a new idea, method, or invention",
+    "example": "The team won an award for their innovation in bridge design."
+  },
+  "innovative": {
+    "type": "adjective",
+    "definition": "using new and creative ideas",
+    "example": "They used an innovative approach to avoid nails or screws."
+  },
+  "engineer": {
+    "type": "noun",
+    "definition": "a person who designs or builds machines, structures, or systems",
+    "example": "The engineer tested the model to ensure it was safe."
+  },
+  "design": {
+    "type": "verb/noun",
+    "definition": "to plan or create; the plan or drawing of something",
+    "example": "The students designed a bridge using only timber."
+  },
+
+  "foundation": {
+    "type": "noun",
+    "definition": "the solid base on which a building is constructed",
+    "example": "The foundation must be strong to support the entire structure."
+  },
+  "insulation": {
+    "type": "noun",
+    "definition": "material used to prevent heat, sound, or electricity from escaping",
+    "example": "Good insulation keeps the house warm in winter."
+  },
+  "reinforce": {
+    "type": "verb",
+    "definition": "to strengthen a structure using additional materials",
+    "example": "The engineers reinforced the walls with steel bars."
+  },
+  "assemble": {
+    "type": "verb",
+    "definition": "to put parts together to form a structure",
+    "example": "Workers assembled the prefabricated panels on-site."
+  },
+  "prefabricated": {
+    "type": "adjective",
+    "definition": "built in sections in a factory and transported for assembly",
+    "example": "Prefabricated homes can be built much faster than traditional ones."
+  },
+  "sustainable": {
+    "type": "adjective",
+    "definition": "environmentally friendly and resource-efficient",
+    "example": "Sustainable materials reduce the building’s carbon footprint."
+  },
+  "load-bearing": {
+    "type": "adjective",
+    "definition": "supporting the weight of a structure",
+    "example": "The load-bearing walls cannot be removed without reinforcement."
+  },
+
+  "concrete": {
+    "type": "noun",
+    "definition": "a building material made from cement, sand, and gravel",
+    "example": "The bridge pillars were made of reinforced concrete."
+  },
+  "brickwork": {
+    "type": "noun",
+    "definition": "the construction or pattern of bricks in a wall",
+    "example": "The brickwork on the old house was beautifully detailed."
+  },
+  "mortar": {
+    "type": "noun",
+    "definition": "a mixture used to bind bricks or stones",
+    "example": "The mason applied fresh mortar between the stones."
+  },
+  "plaster": {
+    "type": "noun",
+    "definition": "a material used to coat walls and ceilings",
+    "example": "The ceiling was finished with smooth plaster."
+  },
+  "glazing": {
+    "type": "noun",
+    "definition": "glass installed in windows or doors",
+    "example": "Double glazing improves energy efficiency."
+  },
+  "paneling": {
+    "type": "noun",
+    "definition": "wooden or decorative panels covering a wall",
+    "example": "The living room featured elegant wooden paneling."
+  },
+
+  "aesthetic": {
+    "type": "adjective",
+    "definition": "related to beauty or artistic style",
+    "example": "The building’s aesthetic appeal comes from its clean lines."
+  },
+  "ergonomic": {
+    "type": "adjective",
+    "definition": "designed for comfort and efficiency",
+    "example": "The ergonomic layout of the kitchen makes cooking easier."
+  },
+  "blueprint": {
+    "type": "noun",
+    "definition": "a detailed technical drawing of a building",
+    "example": "The architect reviewed the blueprint before construction began."
+  },
+  "façade": {
+    "type": "noun",
+    "definition": "the front or exterior face of a building",
+    "example": "The glass façade reflects the surrounding skyline."
+  },
+  "layout": {
+    "type": "noun",
+    "definition": "the arrangement of rooms or elements in a space",
+    "example": "The open-plan layout creates a spacious feel."
+  },
+  "ventilation": {
+    "type": "noun",
+    "definition": "the movement of air through a building",
+    "example": "Good ventilation prevents moisture buildup."
+  },
+
+  "mechanism": {
+    "type": "noun",
+    "definition": "a system of parts working together in a machine",
+    "example": "The locking mechanism failed due to rust."
+  },
+  "counterweight": {
+    "type": "noun",
+    "definition": "a weight that balances another weight",
+    "example": "Elevators use counterweights to reduce motor strain."
+  },
+  "hydraulic": {
+    "type": "adjective",
+    "definition": "operated by the pressure of a fluid",
+    "example": "Hydraulic lifts are common in low-rise buildings."
+  },
+  "automation": {
+    "type": "noun",
+    "definition": "the use of machines to perform tasks automatically",
+    "example": "Home automation systems control lighting and heating."
+  },
+  "sensor": {
+    "type": "noun",
+    "definition": "a device that detects changes in the environment",
+    "example": "Motion sensors turn on the lights automatically."
+  },
+
+  "appliance": {
+    "type": "noun",
+    "definition": "a machine used in the home",
+    "example": "Modern appliances make housework easier."
+  },
+  "smart home": {
+    "type": "noun",
+    "definition": "a home equipped with automated digital systems",
+    "example": "The smart home adjusts the temperature automatically."
+  },
+  "energy-efficient": {
+    "type": "adjective",
+    "definition": "using less energy to perform the same function",
+    "example": "Energy-efficient windows reduce heating costs."
+  },
+  "gadget": {
+    "type": "noun",
+    "definition": "a small, useful device",
+    "example": "The house of the future was filled with gadgets."
+  },
+
+  "scaffolding": {
+    "type": "noun",
+    "definition": "temporary platforms used during construction",
+    "example": "Workers stood on scaffolding to repair the roof."
+  },
+  "crane": {
+    "type": "noun",
+    "definition": "a tall machine used for lifting heavy objects",
+    "example": "The crane lifted steel beams into place."
+  },
+  "welding": {
+    "type": "noun",
+    "definition": "joining metal parts by heating them",
+    "example": "Welding is essential in steel-frame construction."
+  }
+}
