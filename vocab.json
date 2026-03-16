@@ -284,5 +284,140 @@
     "type": "noun",
     "definition": "joining metal parts by heating them",
     "example": "Welding is essential in steel-frame construction."
+  },
+  "prototype": {
+    "type": "noun",
+    "definition": "the first working example of a machine or device",
+    "example": "The prototype was tested before mass production began."
+  },
+  "virtual": {
+    "type": "adjective",
+    "definition": "almost real; simulated by computer",
+    "example": "Virtual reality allows users to explore digital worlds."
+  },
+  "state-of-the-art": {
+    "type": "adjective",
+    "definition": "very modern; using the latest technology",
+    "example": "The lab is equipped with state-of-the-art computers."
+  },
+  "exceed": {
+    "type": "verb",
+    "definition": "to be greater than expected",
+    "example": "Sales exceeded all expectations last quarter."
+  },
+  "digital": {
+    "type": "adjective",
+    "definition": "relating to computers or electronic technology",
+    "example": "Digital devices are now part of everyday life."
+  },
+  "screen": {
+    "type": "noun",
+    "definition": "a surface on which images or data are displayed",
+    "example": "The screen went black during the presentation."
+  },
+  "computerised": {
+    "type": "adjective",
+    "definition": "controlled or operated by computer",
+    "example": "The system is fully computerised and requires no manual input."
+  },
+  "automated": {
+    "type": "adjective",
+    "definition": "operated automatically by machines or computers",
+    "example": "The warehouse uses an automated sorting system."
+  },
+  "remote control": {
+    "type": "noun",
+    "definition": "a device used to operate machines from a distance",
+    "example": "She used the remote control to change the channel."
+  },
+  "wireless connection": {
+    "type": "noun",
+    "definition": "a network connection without physical cables",
+    "example": "My phone connects to the internet via a wireless connection."
+  },
+  "labour-saving": {
+    "type": "adjective",
+    "definition": "designed to reduce the amount of work needed",
+    "example": "The dishwasher is a great labour-saving device."
+  },
+  "cyberspace": {
+    "type": "noun",
+    "definition": "the virtual environment of the internet",
+    "example": "Many people store their data in cyberspace."
+  },
+  "cyber addiction": {
+    "type": "noun",
+    "definition": "excessive use of digital devices or the internet",
+    "example": "Cyber addiction is becoming a concern among teenagers."
+  },
+  "silicon chip": {
+    "type": "noun",
+    "definition": "a small piece of silicon used in electronics to store data",
+    "example": "The silicon chip made computers smaller and faster."
+  },
+  "scroll": {
+    "type": "verb",
+    "definition": "to move up or down on a screen",
+    "example": "Scroll down to read the rest of the article."
+  },
+  "keyboard": {
+    "type": "noun",
+    "definition": "a set of keys used to input data into a computer",
+    "example": "She typed the report using a wireless keyboard."
+  },
+  "function": {
+    "type": "noun",
+    "definition": "the purpose or role of something",
+    "example": "Each button has a different function."
+  },
+  "display": {
+    "type": "verb",
+    "definition": "to show something on a screen",
+    "example": "The monitor displays the system status."
+  },
+  "feature": {
+    "type": "noun",
+    "definition": "a distinctive attribute or aspect of something",
+    "example": "The phone’s best feature is its camera."
+  },
+  "store": {
+    "type": "verb",
+    "definition": "to save or keep data or items",
+    "example": "You can store files on the cloud."
+  },
+  "data": {
+    "type": "noun",
+    "definition": "information, especially in digital form",
+    "example": "The app collects user data for analysis."
+  },
+  "processor": {
+    "type": "noun",
+    "definition": "the part of a computer that performs calculations",
+    "example": "This laptop has a fast processor for gaming."
+  },
+  "gadget": {
+    "type": "noun",
+    "definition": "a small, useful electronic device",
+    "example": "Smartwatches are popular gadgets among tech lovers."
+  },
+  "technological era": {
+    "type": "noun",
+    "definition": "a period defined by rapid technological development",
+    "example": "We are living in a technological era of constant innovation."
+  },
+  "digital era": {
+    "type": "noun",
+    "definition": "a time when digital technology dominates daily life",
+    "example": "The digital era has transformed how we communicate."
+  },
+  "computer program": {
+    "type": "noun",
+    "definition": "a set of instructions that a computer follows",
+    "example": "He wrote a computer program to sort the data."
+  },
+  "television programme": {
+    "type": "noun",
+    "definition": "a scheduled show broadcast on TV",
+    "example": "My favourite television programme airs on Friday nights."
   }
 }
