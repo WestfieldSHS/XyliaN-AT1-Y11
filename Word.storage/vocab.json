@@ -419,5 +419,161 @@
     "type": "noun",
     "definition": "a scheduled show broadcast on TV",
     "example": "My favourite television programme airs on Friday nights."
+  },
+  "urbanisation": {
+    "type": "noun",
+    "definition": "the process by which cities grow and populations increase in urban areas",
+    "example": "Rapid urbanisation has led to overcrowded cities."
+  },
+  "megacity": {
+    "type": "noun",
+    "definition": "a city with a population of over 10 million people",
+    "example": "There are now over 20 megacities around the world."
+  },
+  "infrastructure": {
+    "type": "noun",
+    "definition": "the basic systems and services needed for a city to function",
+    "example": "Poor infrastructure can lead to traffic and sanitation problems."
+  },
+  "pressing": {
+    "type": "adjective",
+    "definition": "urgent or needing immediate attention",
+    "example": "Housing shortages are a pressing issue in urban areas."
+  },
+  "staggering": {
+    "type": "adjective",
+    "definition": "very large or surprising",
+    "example": "The rate of urban growth is staggering."
+  },
+  "adequate": {
+    "type": "adjective",
+    "definition": "sufficient or acceptable in quality or quantity",
+    "example": "Many slum areas lack adequate water supply."
+  },
+  "booming": {
+    "type": "adjective",
+    "definition": "growing rapidly and successfully",
+    "example": "The city’s booming economy attracts many migrants."
+  },
+  "catastrophic": {
+    "type": "adjective",
+    "definition": "extremely harmful or disastrous",
+    "example": "A lack of planning can lead to catastrophic urban failures."
+  },
+  "resolve": {
+    "type": "verb",
+    "definition": "to find a solution to a problem",
+    "example": "The council worked to resolve the housing crisis."
+  },
+  "compromise": {
+    "type": "noun",
+    "definition": "an agreement where both sides give up something",
+    "example": "They reached a compromise on the new building regulations."
+  },
+
+  "flora": {
+    "type": "noun",
+    "definition": "plants of a particular region or time",
+    "example": "The flora of Australia includes many unique species."
+  },
+  "fauna": {
+    "type": "noun",
+    "definition": "animals of a particular region or time",
+    "example": "The fauna of Africa includes lions and elephants."
+  },
+  "habitat": {
+    "type": "noun",
+    "definition": "the natural home of a plant or animal",
+    "example": "Meerkats live in dry, open habitats."
+  },
+  "predator": {
+    "type": "noun",
+    "definition": "an animal that hunts and eats other animals",
+    "example": "The lion is a predator at the top of the food chain."
+  },
+  "natural balance": {
+    "type": "noun",
+    "definition": "the equilibrium between organisms and their environment",
+    "example": "Pollution can disrupt the natural balance of ecosystems."
+  },
+  "introduced species": {
+    "type": "noun",
+    "definition": "a species brought to a new area by humans",
+    "example": "The cane toad is an introduced species in Australia."
+  },
+  "genetically modified": {
+    "type": "adjective",
+    "definition": "having genes altered by scientific methods",
+    "example": "Genetically modified crops resist pests better than natural ones."
+  },
+  "ecological balance": {
+    "type": "noun",
+    "definition": "the stable relationship between living organisms and their environment",
+    "example": "Deforestation threatens the ecological balance."
+  },
+  "extinct": {
+    "type": "adjective",
+    "definition": "no longer existing",
+    "example": "Many species have become extinct due to habitat loss."
+  },
+  "vulnerable": {
+    "type": "adjective",
+    "definition": "at risk of harm or extinction",
+    "example": "Koalas are vulnerable due to habitat destruction."
+  },
+  "endangered": {
+    "type": "adjective",
+    "definition": "at serious risk of extinction",
+    "example": "The panda is an endangered species."
+  },
+  "resistant": {
+    "type": "adjective",
+    "definition": "not affected by something",
+    "example": "Some insects are resistant to pesticides."
+  },
+  "disastrous": {
+    "type": "adjective",
+    "definition": "extremely bad or unsuccessful",
+    "example": "The introduction of cane toads was disastrous for native wildlife."
+  },
+  "hedgehog": {
+    "type": "noun",
+    "definition": "a small mammal with spines on its back",
+    "example": "Hedgehogs roll into a ball to protect themselves."
+  },
+  "hoglet": {
+    "type": "noun",
+    "definition": "a baby hedgehog",
+    "example": "A litter of hoglets is born twice a year."
+  },
+  "quill": {
+    "type": "noun",
+    "definition": "a stiff, sharp spine on a hedgehog’s back",
+    "example": "Hedgehogs use their quills for defense."
+  },
+  "forage": {
+    "type": "verb",
+    "definition": "to search for food",
+    "example": "Hedgehogs forage at night for insects and slugs."
+  },
+  "hibernate": {
+    "type": "verb",
+    "definition": "to sleep through the winter",
+    "example": "Some hedgehogs hibernate during cold months."
+  },
+  "marsupial": {
+    "type": "noun",
+    "definition": "a mammal that carries its young in a pouch",
+    "example": "Kangaroos are marsupials native to Australia."
+  },
+  "monotreme": {
+    "type": "noun",
+    "definition": "an egg-laying mammal",
+    "example": "The platypus is a monotreme found in Australia."
+  },
+  "genome": {
+    "type": "noun",
+    "definition": "the complete set of genetic material of an organism",
+    "example": "Scientists study the hedgehog genome to learn about evolution."
   }
 }
