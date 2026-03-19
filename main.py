@@ -16,3 +16,20 @@ for word in random.sample(list(vocab.keys()), min(5, len(vocab))):  # Print only
     print(f'{word} ({info["type"]}): {info["definition"]}')
     print() #blank line for better readability
 
+#favorite words feature
+def add_to_favorites(word):
+    if word in vocab:
+        if word not in user['favorites']:
+            user['favorites'].append(word)
+            print(f' "{word}" added to your favorites!')
+        else:
+            print(f' "{word}" is already in your favorites.')
+    else:
+        None
+        
+#user review feature
+def user_review(word):
+    if word in vocab:
+        review = input(f'Enter your review for word "{word}": ')
+        user['reviews'][word] = review
+        print(f'Review added for word "{word}".')
