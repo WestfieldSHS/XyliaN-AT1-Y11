@@ -1,5 +1,6 @@
 # Vocabulary daily refresh feature
 import json
+import datetime
 
 with open('vocab.json', 'r', encoding='utf-8') as f:
     vocab = json.load(f)
@@ -15,6 +16,8 @@ def user_info():
     print() #blank line for better readability
     user['name'] = name
     print(f"Hello, {name}! It's great to have you here. Let's explore some new words together!😊")
+    print(f"Current streak: {user['streak']['current']}🔥")
+    print(f"Longest streak: {user['streak']['longest']}🔥")
 #menu display function
 def display_menu():
     print("\nMenu--------------------:")
@@ -55,11 +58,11 @@ print() #blank line for better readability
 #favorite words feature
 def add_to_favorites(word):
     if word in vocab:
-        if word not in user['favorites']:
-            user['favorites'].append(word)
-            print(f' "{word}" added to your favorites!')
-        else:
-            print(f' "{word}" is already in your favorites.')
+        if word not in user['favourites']:
+            user['favourites'].append(word)
+            print(f' "{word}" added to your favourites!')
+        elif word in user['favourites']:
+            print(f' "{word}" is already in your favourites.')
     else:
         None
         
@@ -78,9 +81,26 @@ def check_streak():
         last_date = user['last_Date']
         current = user['streak']['current']
         longest = user['streak']['longest']
-        # check if user have revisit the site
+        # check if user have revisit the app within 24 hours
+        if last_date:
+            last_date = datetime.datetime.strptime(last_date, '%Y-%m-%d') #convert string from user.joson file to date time
+            now = datetime.datetime.now()
+            if (now - last_date).days == 1: #if user revisit the app within 24 hours, increase current streak by 1
+                user['streak']['current'] += 1
+                user['last_Date'] = now.strftime('%Y-%m-%d') #update last date to current date
+                if user['streak']['current'] > longest: #if current streak is longer than longest streak, update longest streak
+                    user['streak']['longest'] = user['streak']['current']
+            elif (now - last_date).days > 1: #if user revisit the app after 24 hours, reset current streak to 0
+                user['streak']['current'] = 0
+                user['last_Date'] = now.strftime('%Y-%m-%d') #update last date to current date
+        else:
+            user['last_Date'] = datetime.datetime.now().strftime('%Y-%m-%d') #if last date is null, set it to current date
+    else:
+        user['last_Date'] = datetime.datetime.now().strftime('%Y-%m-%d') #if last date is not in user data, set it to current date
+
 
 #calling functions
 user_info()
 display_menu()
 menu_selection()
+check_streak()
