@@ -72,6 +72,14 @@ def user_review(word):
     else:
         None
 
+#streak feature
+def check_streak():
+    if 'last_Date' in user:
+        last_date = user['last_Date']
+        current = user['streak']['current']
+        longest = user['streak']['longest']
+        # check if user have revisit the site
+
 #calling functions
 user_info()
 display_menu()

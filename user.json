@@ -6,6 +6,7 @@
     "streak": {
         "current": 0,
         "longest": 0,
-        "lastDate": null
+        "last_Date": null,
+        "rank": 0
     }
 }
