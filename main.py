@@ -85,18 +85,18 @@ def check_streak():
         if last_date:
             last_date = datetime.datetime.strptime(last_date, '%Y-%m-%d') #convert string from user.joson file to date time
             now = datetime.datetime.now()
-            if (now - last_date).days == 1: #if user revisit the app within 24 hours, increase current streak by 1
+            if (now - last_date).days == 1: #if user revisit the app within 24 hours, increase currennt streak by 1
                 user['streak']['current'] += 1
-                user['last_Date'] = now.strftime('%Y-%m-%d') #update last date to current date
+                print(f"Great job, {user['name']}! Your current streak is now {user['streak']['current']}🔥!") 
                 if user['streak']['current'] > longest: #if current streak is longer than longest streak, update longest streak
                     user['streak']['longest'] = user['streak']['current']
-            elif (now - last_date).days > 1: #if user revisit the app after 24 hours, reset current streak to 0
-                user['streak']['current'] = 0
-                user['last_Date'] = now.strftime('%Y-%m-%d') #update last date to current date
-        else:
-            user['last_Date'] = datetime.datetime.now().strftime('%Y-%m-%d') #if last date is null, set it to current date
-    else:
-        user['last_Date'] = datetime.datetime.now().strftime('%Y-%m-%d') #if last date is not in user data, set it to current date
+                elif (now - last_date).days > 1: #if user revisit the app after 24 hours, reset current streak to 0
+                    user['streak']['current'] = 0
+                    print(f"Don't worry, {user['name']}! Your current streak has been reset to 0. Let's start building it up again!💪")
+                elif (now - last_date).days == 2 or (now - last_date).days == 3: #If user revisit the app after 3 or 4 days, freeze the curren streak for 1 day and give user a warning message
+                    print(f"Welcome back, {user['name']}! Your current streak is {user['streak']['current']}🔥. However, since you haven't visited the app for a while, your streak will be frozen for 1 day. Please make sure to visit the app daily to keep your streak alive!💪")
+            else:
+                print(f"Welcome back, {user['name']}! Your current streak is {user['streak']['current']}🔥. Keep it up!💪")
 
 
 #calling functions
