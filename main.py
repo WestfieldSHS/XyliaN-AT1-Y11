@@ -1,6 +1,5 @@
 # Vocabulary daily refresh feature
-import json
-import datetime
+import json, datetime
 
 with open('vocab.json', 'r', encoding='utf-8') as f:
     vocab = json.load(f)
@@ -16,8 +15,6 @@ def user_info():
     print() #blank line for better readability
     user['name'] = name
     print(f"Hello, {name}! It's great to have you here. Let's explore some new words together!😊")
-    print(f"Current streak: {user['streak']['current']}🔥")
-    print(f"Longest streak: {user['streak']['longest']}🔥")
 #menu display function
 def display_menu():
     print("\nMenu--------------------:")
@@ -35,25 +32,32 @@ def menu_selection():
             print(f'{word} ({info["type"]}): {info["definition"]}')
             print() #blank line for better readability
     elif menu == '2':
-        word = input("Enter the word you want to add to favorites: ")
+        word = input("Enter the word you want to add to favorites: ").strip()
         add_to_favorites(word)  
         print() #blank line for better readability
     elif menu == '3':
-        word = input("Enter the word you want to review: ")
+        word = input("Enter the word you want to review: ").strip()
         user_review(word)
         print() #blank line for better readability
+   
     elif menu == '4':
         print(f"Name: {user['name']}")
-        print(f"Favorites: {', '.join(user['favorites'])}")
+        print(f"Favorites: {', '.join(user['favourites'])}")
         print(f"Reviews: {len(user['reviews'])}")
         print() #blank line for better readability
     elif menu == '5':
-        print("Goodbye! Don't forget to come back tomorrow for new words!🔥✨")  
+        exit_program()
     else: 
-        print("Invalid option. Please select a number between 1-5 only.🫩")
+        input("Invalid option. Please select a number between 1-5 only.🫩 Please enter to try again")
+        print() #blank line for better readability
+    return menu_selection() #loop the menu until user select exit option
 
 
 print() #blank line for better readability
+
+def exit_program():
+    print("Goodbye! Don't forget to come back tomorrow for new words!🔥✨")  
+    exit() #Exit the program
 
 #favorite words feature
 def add_to_favorites(word):
@@ -68,39 +72,52 @@ def add_to_favorites(word):
         
 #user review feature
 def user_review(word):
-    if word in vocab:
-        review = input(f'Enter your review for word "{word}": ')
-        user['reviews'][word] = review
-        print(f'Review added for word "{word}".')
-    else:
-        None
+   #Check if the word exits in vocab.json
+   if word not in vocab:
+       print(f'"{word}" is not in the vocabulary list. Please try another word.')
+       return
+   
+   #Check if user has already reviewed the word
+   if word in reviewed_words:
+       reviewed_words = [review['word'] for review in user['reviews']]
+       print(f'You have already reviewed the word "{word}".')
+       return #Exit the function if the word has already been reviewed
+   
+   #User input for reviewing the word
+   definition = input(f'Enter your definition for word "{word}": ')
+   user['reviews'].append({"word": word, "definition": definition})
+   print(f'Review added for word "{word}".') 
 
 #streak feature
-def check_streak():
-    if 'last_Date' in user:
-        last_date = user['last_Date']
-        current = user['streak']['current']
-        longest = user['streak']['longest']
-        # check if user have revisit the app within 24 hours
-        if last_date:
-            last_date = datetime.datetime.strptime(last_date, '%Y-%m-%d') #convert string from user.joson file to date time
-            now = datetime.datetime.now()
-            if (now - last_date).days == 1: #if user revisit the app within 24 hours, increase currennt streak by 1
-                user['streak']['current'] += 1
-                print(f"Great job, {user['name']}! Your current streak is now {user['streak']['current']}🔥!") 
-                if user['streak']['current'] > longest: #if current streak is longer than longest streak, update longest streak
-                    user['streak']['longest'] = user['streak']['current']
-                elif (now - last_date).days > 1: #if user revisit the app after 24 hours, reset current streak to 0
-                    user['streak']['current'] = 0
-                    print(f"Don't worry, {user['name']}! Your current streak has been reset to 0. Let's start building it up again!💪")
-                elif (now - last_date).days == 2 or (now - last_date).days == 3: #If user revisit the app after 3 or 4 days, freeze the curren streak for 1 day and give user a warning message
-                    print(f"Welcome back, {user['name']}! Your current streak is {user['streak']['current']}🔥. However, since you haven't visited the app for a while, your streak will be frozen for 1 day. Please make sure to visit the app daily to keep your streak alive!💪")
-            else:
-                print(f"Welcome back, {user['name']}! Your current streak is {user['streak']['current']}🔥. Keep it up!💪")
+def check_streak(last_date, current, longest_streak, name, now=None):
+    #Simulate current date for testing purposes
+    if now is None:
+        now = datetime.date.now()
+        #Convert last_date to date
+        last_date = datetime.datetime.strptime(last_date, "%Y-%m-%d").date()
+        delta = (now - last_date).days
+        if delta == 1: #User revisits the app the next day, increase current streak by one
+            current += 1
+            print(f"Great job, {name}! Your current streak is now {current} days!🔥")
+            if current > longest_streak: #Update longest streak if current streak exceeds it
+                longest_streak = current
+    elif delta in (2, 3): #User breaks the streak after 2 or 3 days, freeze current streak
+        print(f"Welcome back, {name}! Your current streak is frozen at {current} days. Keep up the good work!🔥")
+    elif delta > 4: #User breaks the streak after 4 days, reset streak to 0
+        current = 0
+        print(f"Welcome back, {name}! Your streak has been reset to 0. Don't worry, you can start building it up again!🔥")
+    else: #User revisits the app on the same day, no change to streak
+        None
+    return current, longest_streak
 
+    
 
 #calling functions
 user_info()
 display_menu()
 menu_selection()
-check_streak()
+
+#testing streak feature
+if __name__ == "__main__":
+    check_streak("2026-04-01", 5, 10, "Alice") #simulate user revisit the app after 5 days
+  

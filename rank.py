@@ -1,12 +1,12 @@
+import json
 with open('user.json', 'r', encoding='utf-8') as f:
     user = json.load(f)
 with open('user_review.json', 'r', encoding='utf-8') as f:
     user_review = json.load(f)
 #ranking system feature
-rank = 0
 points = 0
 
-#different users split
+#identify different users and assign rank and points
 if user['name'] != {user['name']}:
     rank = 0 #New users start at rank 0
     points = 0 #New users start with 0 points
