@@ -1,4 +1,5 @@
 import json
+from main import user
 with open('user.json', 'r', encoding='utf-8') as f:
     user = json.load(f)
 with open('user_review.json', 'r', encoding='utf-8') as f:

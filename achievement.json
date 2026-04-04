@@ -1,0 +1,40 @@
+{
+    "achievements": [
+        {
+            "id": 1,
+            "name": "Word Reviewer",
+            "type": "reviews",
+            "stars": [
+                { "star": 1, "requirement": 1 },
+                { "star": 2, "requirement": 5 },
+                { "star": 3, "requirement": 10 },
+                { "star": 4, "requirement": 20 },
+                { "star": 5, "requirement": 50 }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Streak Champion",
+            "type": "streak",
+            "stars": [
+                { "star": 1, "requirement": 1 },
+                { "star": 2, "requirement": 3 },
+                { "star": 3, "requirement": 5 },
+                { "star": 4, "requirement": 7 },
+                { "star": 5, "requirement": 14 }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Freeze Master",
+            "type": "freeze",
+            "stars": [
+                { "star": 1, "requirement": 2 },
+                { "star": 2, "requirement": 1 },
+                { "star": 3, "requirement": 0 },
+                { "star": 4, "requirement": 0 },
+                { "star": 5, "requirement": 0 }
+            ]
+        }
+    ]
+}

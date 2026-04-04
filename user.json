@@ -2,15 +2,18 @@
     "name": "",
     "vocabulary": [],
     "favourites": [],
-    "reviews": {
-        "amount": 0,
-        "reviewed_words": []
-    },
+    "reviews": [],
     "streak": {
         "current": 0,
         "longest": 0,
         "last_date": null,
         "rank": 0,
-        "points": 0
+        "points": 0,
+        "freeze_remaining": 2
+    },
+    "achievement_progress": {
+        "1": [], 
+        "2": [],
+        "3": []
     }
 }
