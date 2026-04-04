@@ -179,10 +179,6 @@ def show_achievements():
         print(f"{a['name']}: {star_bar(unlocked_stars)}")
 
 #calling functions
-#user_info()
-#display_menu()
-#menu_selection()
-
 if __name__ == "__main__":
     user_info()
     display_menu()
