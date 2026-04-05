@@ -1,5 +1,6 @@
 # Vocabulary daily refresh feature
 import json, datetime
+user = None #Initialize user variable to None, it will be assigned after loading user data based on name input
 from user_management import load_user_data, save_user_data
 
 #achievement data handling
@@ -13,6 +14,7 @@ import random #random module for selecting random words for daily refresh featur
 print("Welcome to Vocabulary!")
 #user information input
 def user_info():
+    global user #Declare user as global to modify it within the function
     name = input("Enter your name: ").strip()
     user = load_user_data(name) #Load user data based on name input
     print() #blank line for better readability
@@ -62,7 +64,7 @@ def menu_selection():
         print() #blank line for better readability
     elif menu == '4':
         print(f"Name: {user['name']}")
-        print(f"Favorites: {', '.join(user['favourites'])}")
+        print(f"Favourites: {', '.join(user['favourites'])}")
         print(f"Reviews: {len(user['reviews'])}")
         print(f"Current Streak: {user['streak']['current']} days🔥")
         print(f"Longest Streak: {user['streak']['longest']} days🔥")
@@ -95,6 +97,7 @@ def add_to_favorites(word):
             print(f' "{word}" is already in your favourites.')
     else:
         None
+    save_user_data(user) #Save user data after adding to favorites
         
 #user review feature
 def user_review(word):
@@ -112,14 +115,14 @@ def user_review(word):
    #User input for reviewing the word
     definition = input(f'Enter your definition for word "{word}": ')
     user['reviews'].append({"word": word, "definition": definition})
-    check_achievement
+    check_achievement(user, achievement) #Check achievements after adding review
     print(f'Review added for word "{word}".') 
-
+    save_user_data(user) #Save user data after adding review
 #streak feature
 def check_streak(last_date, current, longest_streak, name, now=None):
     #Simulate current date for testing purposes
     if now is None:
-        now = datetime.date.now()
+        now = datetime.date.today()
         #Convert last_date to date
         last_date = datetime.datetime.strptime(last_date, "%Y-%m-%d").date()
         delta = (now - last_date).days #Calculate the difference in days between now and last_date
@@ -139,6 +142,7 @@ def check_streak(last_date, current, longest_streak, name, now=None):
         else: #User revisits the app on the same day, no change to streak
             None
     return current, longest_streak
+    save_user_data(user) #Save user data after checking streak
 
 def check_achievement(user, achievement):
     for a in achievement["achievements"]:
@@ -169,6 +173,7 @@ def check_achievement(user, achievement):
 
         # Save updated stars
         user["achievement_progress"][a_id] = unlocked_stars
+        save_user_data(user) #Save user data after checking achievements
 
 
 #Function to display star bar based on unlocked stars
@@ -191,5 +196,4 @@ if __name__ == "__main__":
     user_info()
     display_menu()
     menu_selection()
-    check_achievement(user, achievement)
-    show_achievements()
+   

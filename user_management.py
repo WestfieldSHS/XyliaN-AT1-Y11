@@ -8,7 +8,7 @@ def load_user_data(name):
     # If user data file doesn't exist, create a new user data structure
     new_user = {
         "name": name,
-        "favorites": [],
+        "favourites": [],
         "reviews": [],
         "streak": {
             "current": 0,
