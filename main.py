@@ -1,5 +1,6 @@
 # Vocabulary daily refresh feature
 import json, datetime
+from user_management import load_user_data, save_user_data
 
 #achievement data handling
 with open('achievement.json', 'r', encoding='utf-8') as f:
@@ -7,15 +8,13 @@ with open('achievement.json', 'r', encoding='utf-8') as f:
 #vocab data handling
 with open('vocab.json', 'r', encoding='utf-8') as f:
     vocab = json.load(f)
-#user data handling
-with open('user.json', 'r', encoding='utf-8') as f:
-    user = json.load(f)
 import random #random module for selecting random words for daily refresh feature
 #Welcome message
 print("Welcome to Vocabulary!")
 #user information input
 def user_info():
-    name = input("Enter your name: ")
+    name = input("Enter your name: ").strip()
+    user = load_user_data(name) #Load user data based on name input
     print() #blank line for better readability
     user['name'] = name
     print(f"Hello, {name}! It's great to have you here. Let's explore some new words together!😊")
@@ -33,6 +32,7 @@ def user_info():
         user['streak']['last_date'] = datetime.date.today().strftime("%Y-%m-%d") #Update last_date to today for returning users
         print(f"current streak: {current} days🔥")
         print(f"longest streak: {longest_streak} days🔥")
+        check_achievement(user, achievement) #Check achievements after updating streak
         print() #blank line for better readability
 
 #menu display function
@@ -48,7 +48,7 @@ def display_menu():
 def menu_selection():
     menu = input("Please select an option (1-6): ")
     if menu == '1':
-        for word in random.sample(list(vocab.keys()), min(10, len(vocab))):  # Print only 10 random words/Refresh daily features
+        for word in random.sample(list(vocab.keys()), min(5, len(vocab))):  # Print only 5 random words/Refresh daily features
             info = vocab[word]
             print(f'{word} ({info["type"]}): {info["definition"]}')
             print() #blank line for better readability
@@ -68,12 +68,13 @@ def menu_selection():
         print(f"Longest Streak: {user['streak']['longest']} days🔥")
         print() #blank line for better readability
     elif menu == '5':
+        check_achievement(user, achievement) #Check achievements before displaying
         show_achievements()
         print() #blank line for better readability
     elif menu == '6':
         exit_program()
     else: 
-        input("Invalid option. Please select a number between 1-6 only.🫩 Please enter to try again")
+        input("Invalid option. Please select a number between 1-6 only.🫩  Please enter to try again")
         print() #blank line for better readability
     return menu_selection() #loop the menu until user select exit option
 
@@ -111,6 +112,7 @@ def user_review(word):
    #User input for reviewing the word
     definition = input(f'Enter your definition for word "{word}": ')
     user['reviews'].append({"word": word, "definition": definition})
+    check_achievement
     print(f'Review added for word "{word}".') 
 
 #streak feature
@@ -138,30 +140,36 @@ def check_streak(last_date, current, longest_streak, name, now=None):
             None
     return current, longest_streak
 
-def check_achievement():
+def check_achievement(user, achievement):
     for a in achievement["achievements"]:
-        #Get the achievement ID and user's progress for that achievement
-        a_id = str(a["id"]) #str because achievement_progress keys are strings
+        a_id = str(a["id"])
         unlocked_stars = user["achievement_progress"].get(a_id, [])
-        #Check each star requirement for the achievement
-        for star in a["star"]:
+
+        # Check each star requirement for the achievement
+        for star_info in a["stars"]:
             star_num = star_info["star"]
             requirement = star_info["requirement"]
-        
-        #CHECK REQUIREMENT FOR EACH ACHIEVEMENT TYPE
-        if a["type"] == "review":
-            if len(user["reviews"]) >= requirement:
-                unlocked_stars.append(star_num)
 
-        elif a["type"] == "streak":
-            if user["streak"]["longest"] >= requirement:
-                unlocked_stars.append(star_num)
-        
-        elif a["type"] == "freeze":
-            if user["streak"]["freeze_remaining"] >= requirement:
-                unlocked_stars.append(star_num)
+            # Skip if already unlocked
+            if star_num in unlocked_stars:
+                continue
 
-    user["achievement_progress"][a_id] = unlocked_stars #Update user's achievement progress
+            # Check type requirements
+            if a["type"] == "reviews":
+                if len(user["reviews"]) >= requirement:
+                    unlocked_stars.append(star_num)
+
+            elif a["type"] == "streak":
+                if user["streak"]["current"] >= requirement:
+                    unlocked_stars.append(star_num)
+
+            elif a["type"] == "freeze":
+                if user["streak"]["freeze_remaining"] <= requirement:
+                    unlocked_stars.append(star_num)
+
+        # Save updated stars
+        user["achievement_progress"][a_id] = unlocked_stars
+
 
 #Function to display star bar based on unlocked stars
 def star_bar(unlocked_stars):
@@ -183,4 +191,5 @@ if __name__ == "__main__":
     user_info()
     display_menu()
     menu_selection()
-  
+    check_achievement(user, achievement)
+    show_achievements()

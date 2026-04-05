@@ -575,5 +575,61 @@
     "type": "noun",
     "definition": "the complete set of genetic material of an organism",
     "example": "Scientists study the hedgehog genome to learn about evolution."
+  },
+  "biodiversity": {
+    "type": "noun",
+    "definition": "the variety of life in a particular habitat or ecosystem",
+    "example": "Rainforests are known for their high biodiversity."
+  },  
+  "puberty": {
+    "type": "noun",
+    "definition": "the stage of life when a child's body begins to develop into an adult body",
+    "example": "Puberty includes physical and emotional changes as the body matures."
+  },
+  "consent": {
+    "type": "noun",
+    "definition": "a clear and voluntary agreement to participate in an activity",
+    "example": "Consent must be freely given and can be withdrawn at any time."
+  },
+  "reproductivesystem": {
+    "type": "noun",
+    "definition": "the group of organs involved in producing offspring",
+    "example": "The reproductive system works differently in males and females."
+  },
+  "menstruation": {
+    "type": "noun",
+    "definition": "the monthly shedding of the uterine lining in people with a uterus",
+    "example": "Menstruation is a normal part of the reproductive cycle."
+  },
+  "fertilization": {
+    "type": "noun",
+    "definition": "the process in which a sperm cell and an egg cell combine",
+    "example": "Fertilization usually occurs in the fallopian tube."
+  },
+  "contraception": {
+    "type": "noun",
+    "definition": "methods or devices used to prevent pregnancy",
+    "example": "Contraception helps individuals plan if and when they want children."
+  },
+  "hormones": {
+    "type": "noun",
+    "definition": "chemical messengers in the body that regulate growth, mood, and development",
+    "example": "Hormones play a major role in the changes experienced during puberty."
+  },
+  "sexualhealth": {
+    "type": "noun",
+    "definition": "a state of physical, emotional, and social well‑being related to sexuality",
+    "example": "Sexual health includes understanding boundaries, consent, and safe practices."
+  },
+  "anatomy": {
+    "type": "noun",
+    "definition": "the study of the structure of the human body",
+    "example": "Learning anatomy helps students understand how their bodies function."
+  },
+  "communication": {
+    "type": "noun",
+    "definition": "the exchange of information, feelings, or ideas between people",
+    "example": "Healthy relationships rely on open and respectful communication."
   }
 }
+

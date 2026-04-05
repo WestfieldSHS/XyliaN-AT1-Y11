@@ -1,19 +1,18 @@
 {
-    "name": "",
-    "vocabulary": [],
-    "favourites": [],
+    "name": "Xylia",
+    "favorites": [],
     "reviews": [],
     "streak": {
         "current": 0,
         "longest": 0,
         "last_date": null,
-        "rank": 0,
-        "points": 0,
-        "freeze_remaining": 2
+        "freeze_remaining": 0
     },
     "achievement_progress": {
-        "1": [], 
+        "1": [],
         "2": [],
         "3": []
-    }
+    },
+    "points": 0,
+    "rank": 0
 }
