@@ -7,12 +7,16 @@
         {
             "word": "digital",
             "definition": "mckenswfoews"
+        },
+        {
+            "word": "genome",
+            "definition": "grsebf"
         }
     ],
     "streak": {
         "current": 1,
         "longest": 1,
-        "last_date": "2026-04-06",
+        "last_date": "2026-04-08",
         "freeze_remaining": 0
     },
     "achievement_progress": {
@@ -30,6 +34,6 @@
             5
         ]
     },
-    "points": 10,
-    "rank": 3
+    "points": 20,
+    "rank": 2
 }

@@ -125,12 +125,20 @@ def user_review(word):
     elif word in reviewed_words:
        print(f'You have already reviewed the word "{word}".')
        return #Exit the function if the word has already been reviewed
-   
-   #User input for reviewing the word
+    
     definition = input(f'Enter your definition for word "{word}": ')
+    print() #blank line for better readability
+    #Let user know the correct definition after they input their definition for the word, so they can compare and learn from it
+    correct_definition = vocab[word]['definition'] #Get the correct definition from vocab.json
+    print(f'The correct definition of "{word}" is: {correct_definition}')
+    print(vocab[word]['example']) #Provide an example sentence for the word to help user understand how to use it in context
+    print() #blank line for better readability
+   
+   #Add the review to user data and check achievements after adding the review
     user['reviews'].append({"word": word, "definition": definition})
     check_achievement(user, achievement) #Check achievements after adding review
     print(f'Review added for word "{word}".') 
+    print() #blank line for better readability
     save_user_data(user) #Save user data after adding review
 #streak feature
 def check_streak(last_date, current, longest_streak, name, now=None):
