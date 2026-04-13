@@ -1,8 +1,12 @@
-# Vocabulary daily refresh feature
-import json, datetime
+
+import os, shutil #os and shutil modules for handling file operations related to class joining feature
+import json, datetime, time
 user = None #Initialize user variable to None, it will be assigned after loading user data based on name input
 from user_management import load_user_data, save_user_data
 from rank import calculate_rank, display_rank, view_global_rankings
+from teacher_management import teacher_info, teacher_menu, create_class, view_class_list, view_teacher_info, teacher_login #handling teacher data
+
+
 
 #achievement data handling
 with open('achievement.json', 'r', encoding='utf-8') as f:
@@ -13,13 +17,44 @@ with open('vocab.json', 'r', encoding='utf-8') as f:
 import random #random module for selecting random words for daily refresh feature
 #Welcome message
 print("Welcome to Vocabulary!")
+for char in "Let's start building your vocabulary together!🔥📚":
+    print(char, end='', flush=True) #Print welcome message with a typing effect
+    time.sleep(0.05) #Delay between each character for typing effect
+print() #blank line for better readability
+
+def role_selection():
+    role = input("Are you a student or a teacher? (Enter 'student' or 'teacher'): ").strip().lower()
+    if role == 'teacher':
+        teacher = teacher_info() #Call teacher_info function if user is a teacher
+        teacher_menu(teacher) #Call teacher_menu function to display teacher menu after logging in
+    elif role == 'student':
+        user_info() #Call user_info function if user is a student
+    else:
+        input("Invalid role. Please enter 'student' or 'teacher' only.🫩  Please enter to try again")
+        return role_selection() #Loop role selection until user selects a valid role
+
+
 #user information input
 def user_info():
     global user #Declare user as global to modify it within the function
-    name = input("Enter your name: ").strip()
+    name = input("Enter your full name: ").strip()
+    first_name, last_name = name.split(" ", 1) #Split name input into first and last name
+    join = input("Enter class code to join (6 digits): ").strip()
+    student_id = f"S{int(time.time())}{first_name[0].upper()}{last_name[0].upper()}{random.randint(1000, 9999)}" #Student ID format: S + current timestamp in seconds + Student's initials + random 4 digit number to ensure uniqueness
+    print(f"Your generated student ID is: {student_id}") #Display generated student ID to user
+    if join:
+        class_folder = f"classes/{join}"
+        if os.path.exists(class_folder):
+            shutil.copy(f"users/{user['name'].lower()}.json", class_folder) #Copy user data file to class folder if class code is valid
+            print("Joined class successfully!")
+        else:
+            print("Invalid class code.") #Inform user if class code is invalid
+
+    #Load user data based on name input and update class code in user data
     user = load_user_data(name) #Load user data based on name input
     print() #blank line for better readability
     user['name'] = name
+    user['class_code'] = join 
     print(f"Hello, {name}! It's great to have you here. Let's explore some new words together!😊")
     current, longest_streak = user['streak']['current'], user['streak']['longest'] #Get current and longest streak from user data
     if user['streak']['last_date'] is None: #If user is new, initialize streak data
@@ -218,7 +253,9 @@ def show_achievements():
 
 #calling functions
 if __name__ == "__main__":
+    role_selection()
     user_info()
     display_menu()
     menu_selection()
+  
     

@@ -1,5 +1,5 @@
 import json, os
-from user_management import load_user_data, save_user_data
+from student_management import load_user_data, save_user_data
 
 #ranking system feature
 def calculate_rank():

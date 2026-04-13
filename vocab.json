@@ -630,6 +630,337 @@
     "type": "noun",
     "definition": "the exchange of information, feelings, or ideas between people",
     "example": "Healthy relationships rely on open and respectful communication."
+  },
+  "sibling": {
+    "type": "noun",
+    "definition": "a brother or sister",
+    "example": "She has a close relationship with her sibling."
+  },
+  "adolescence": {
+    "type": "noun",
+    "definition": "the stage between childhood and adulthood",
+    "example": "Adolescence is a period of rapid physical and emotional change."
+  },
+  "nurture": {
+    "type": "verb",
+    "definition": "to help someone grow and develop",
+    "example": "Parents nurture their children by giving them love and support."
+  },
+  "interaction": {
+    "type": "noun",
+    "definition": "communication or direct involvement with someone",
+    "example": "Positive interaction helps children develop social skills."
+  },
+  "rewarding": {
+    "type": "adjective",
+    "definition": "giving a lot of pleasure or satisfaction",
+    "example": "Working with young children can be very rewarding."
+  },
+  "milestone": {
+    "type": "noun",
+    "definition": "an important stage or event in development",
+    "example": "Learning to walk is a major milestone for toddlers."
+  },
+  "cognitive": {
+    "type": "adjective",
+    "definition": "related to thinking, understanding, and learning",
+    "example": "Cognitive skills improve rapidly during early childhood."
+  },
+  "selfconscious": {
+    "type": "adjective",
+    "definition": "uncomfortably aware of oneself",
+    "example": "Teenagers often feel self-conscious about their appearance."
+  },
+  "rebellious": {
+    "type": "adjective",
+    "definition": "resisting authority or control",
+    "example": "Many teenagers go through a rebellious phase."
+  },
+  "immature": {
+    "type": "adjective",
+    "definition": "not fully developed emotionally or mentally",
+    "example": "Some children behave in an immature way compared to their peers."
+  },
+  "nurturing": {
+    "type": "adjective",
+    "definition": "caring and supportive",
+    "example": "A nurturing teacher helps students feel safe and confident."
+  },
+  "tantrum": {
+    "type": "noun",
+    "definition": "an uncontrolled outburst of anger",
+    "example": "Toddlers often throw a tantrum when they are frustrated."
+  },
+  "unsteady": {
+    "type": "adjective",
+    "definition": "not stable or balanced",
+    "example": "A baby learning to walk may be unsteady on their feet."
+  },
+  "tolerant": {
+    "type": "adjective",
+    "definition": "accepting of others’ differences",
+    "example": "Good leaders are tolerant of different opinions."
+  },
+  "transition": {
+    "type": "noun",
+    "definition": "a period of change from one stage to another",
+    "example": "Moving to high school is a big transition for many students."
+  },
+  "growthspurt": {
+    "type": "noun",
+    "definition": "a sudden increase in height or size",
+    "example": "Teenagers often experience a growth spurt during puberty."
+  },
+  "clumsy": {
+    "type": "adjective",
+    "definition": "awkward in movement",
+    "example": "Rapid growth can make teenagers feel clumsy."
+  },
+  "abstract": {
+    "type": "adjective",
+    "definition": "relating to ideas rather than physical objects",
+    "example": "Teenagers begin to understand abstract concepts."
+  },
+  "memory": {
+    "type": "noun",
+    "definition": "the ability to remember information",
+    "example": "Her memory for names is excellent."
+  },
+  "recall": {
+    "type": "verb",
+    "definition": "to remember something",
+    "example": "He couldn’t recall the answer during the test."
+  },
+  "slippedmymind": {
+    "type": "phrase",
+    "definition": "to forget something",
+    "example": "Sorry, the meeting completely slipped my mind."
+  },
+  "nutritious": {
+    "type": "adjective",
+    "definition": "containing substances needed for good health",
+    "example": "Fruit and vegetables are highly nutritious."
+  },
+  "nutrients": {
+    "type": "noun",
+    "definition": "substances needed for growth and health",
+    "example": "These foods provide essential nutrients."
+  },
+  "overweight": {
+    "type": "adjective",
+    "definition": "weighing more than is healthy",
+    "example": "Eating too much fast food can make you overweight."
+  },
+  "overeating": {
+    "type": "noun",
+    "definition": "eating too much food",
+    "example": "Skipping meals can lead to overeating later."
+  },
+  "ingredients": {
+    "type": "noun",
+    "definition": "the items used to make a dish",
+    "example": "Always check the ingredients for allergens."
+  },
+  "maintain": {
+    "type": "verb",
+    "definition": "to keep something at the same level",
+    "example": "Exercise helps maintain a healthy weight."
+  },
+  "aerobic": {
+    "type": "adjective",
+    "definition": "relating to exercise that increases heart and lung activity",
+    "example": "Running is a form of aerobic exercise."
+  },
+  "obese": {
+    "type": "adjective",
+    "definition": "extremely overweight",
+    "example": "A poor diet can lead to becoming obese."
+  },
+  "prevent": {
+    "type": "verb",
+    "definition": "to stop something from happening",
+    "example": "A healthy lifestyle can prevent many illnesses."
+  },
+  "allergy": {
+    "type": "noun",
+    "definition": "a condition where the body reacts to certain foods or substances",
+    "example": "He has a severe nut allergy."
+  },
+  "stress": {
+    "type": "noun",
+    "definition": "mental or emotional strain",
+    "example": "Too much stress can affect your sleep."
+  },
+  "insomnia": {
+    "type": "noun",
+    "definition": "difficulty falling or staying asleep",
+    "example": "Stress often leads to insomnia."
+  },
+  "tension": {
+    "type": "noun",
+    "definition": "mental or emotional strain",
+    "example": "Tension headaches are common during exams."
+  },
+  "appetite": {
+    "type": "noun",
+    "definition": "a desire to eat",
+    "example": "Stress can reduce your appetite."
+  },
+  "hyperactivity": {
+    "type": "noun",
+    "definition": "excessive movement or activity",
+    "example": "Stress may trigger thyroid hyperactivity."
+  },
+  "leisure": {
+    "type": "noun",
+    "definition": "free time used for enjoyment",
+    "example": "Leisure activities help reduce stress."
+  },
+  "fulfilment": {
+    "type": "noun",
+    "definition": "a deep sense of satisfaction",
+    "example": "Helping others gives her a sense of fulfilment."
+  },
+  "insight": {
+    "type": "noun",
+    "definition": "a deep understanding of something",
+    "example": "The study gave insight into human behaviour."
+  },
+  "recreational": {
+    "type": "adjective",
+    "definition": "related to activities done for enjoyment",
+    "example": "Swimming is a recreational activity."
+  },
+  "personality": {
+    "type": "noun",
+    "definition": "the combination of characteristics that form a person’s character",
+    "example": "Your hobbies can reflect your personality."
+  },
+  "optimist": {
+    "type": "noun",
+    "definition": "someone who expects positive outcomes",
+    "example": "An optimist sees challenges as opportunities."
+  },
+  "pessimist": {
+    "type": "noun",
+    "definition": "someone who expects negative outcomes",
+    "example": "A pessimist often worries about the future."
+  },
+  "realist": {
+    "type": "noun",
+    "definition": "someone who accepts situations as they are",
+    "example": "A realist focuses on practical solutions."
+  },
+  "standardofliving": {
+    "type": "noun",
+    "definition": "the level of wealth and comfort available to a person",
+    "example": "The standard of living has improved over time."
+  },
+  "qualityoflife": {
+    "type": "noun",
+    "definition": "the general well-being of a person",
+    "example": "Work-life balance affects quality of life."
+  },
+  "coordination": {
+      "type": "noun",
+      "definition": "the ability to use different parts of the body smoothly and efficiently",
+      "example": "Children develop better coordination as they grow."
+  },
+  "motorSkills": {
+      "type": "noun",
+      "definition": "abilities required to control the muscles for movement",
+      "example": "Fine motor skills improve when children learn to write."
+  },
+  "peerPressure": {
+      "type": "noun",
+      "definition": "influence from members of one's peer group",
+      "example": "Peer pressure can affect teenagers' decisions."
+  },
+  "development": {
+      "type": "noun",
+      "definition": "the process of growing or improving",
+      "example": "Early childhood development shapes future learning."
+  },
+  "stimulus": {
+      "type": "noun",
+      "definition": "something that causes a reaction or response",
+      "example": "Bright colors act as a stimulus for infants."
+  },
+  "bonding": {
+      "type": "noun",
+      "definition": "the process of forming a close emotional connection",
+      "example": "Skin-to-skin contact helps bonding between mother and baby."
+  },
+  "discipline": {
+      "type": "noun",
+      "definition": "training people to obey rules or behave correctly",
+      "example": "Consistent discipline helps children learn boundaries."
+  },
+  "curiosity": {
+      "type": "noun",
+      "definition": "a strong desire to learn or know something",
+      "example": "Curiosity drives children to explore their environment."
+  },
+  "independence": {
+      "type": "noun",
+      "definition": "the ability to do things without help",
+      "example": "Toddlers show independence by wanting to do tasks alone."
+  },
+  "attachment": {
+      "type": "noun",
+      "definition": "a deep emotional bond between people",
+      "example": "Secure attachment helps children feel safe."
+  },
+  "wellbeing": {
+      "type": "noun",
+      "definition": "a state of being healthy, happy, and comfortable",
+      "example": "Exercise improves mental and physical wellbeing."
+  },
+  "metabolism": {
+      "type": "noun",
+      "definition": "the chemical processes that occur within the body to maintain life",
+      "example": "A fast metabolism burns calories more quickly."
+  },
+  "endurance": {
+      "type": "noun",
+      "definition": "the ability to sustain physical or mental effort",
+      "example": "Running regularly increases endurance."
+  },
+  "circulation": {
+      "type": "noun",
+      "definition": "the movement of blood through the body",
+      "example": "Exercise improves blood circulation."
+  },
+  "immuneSystem": {
+      "type": "noun",
+      "definition": "the body's defense system against illness",
+      "example": "A balanced diet supports a strong immune system."
+  },
+  "burnout": {
+      "type": "noun",
+      "definition": "a state of emotional, physical, and mental exhaustion",
+      "example": "Working too much can lead to burnout."
+  },
+  "mindfulness": {
+      "type": "noun",
+      "definition": "the practice of being aware and present in the moment",
+      "example": "Mindfulness helps reduce stress and anxiety."
+  },
+  "productivity": {
+      "type": "noun",
+      "definition": "the rate at which work is completed",
+      "example": "Good sleep improves productivity."
+  },
+  "motivation": {
+      "type": "noun",
+      "definition": "the reason or desire to act or achieve something",
+      "example": "Setting goals increases motivation."
+  },
+  "lifestyle": {
+      "type": "noun",
+      "definition": "the way a person lives, including habits and choices",
+      "example": "A healthy lifestyle includes regular exercise and good nutrition."
   }
 }
+
 
