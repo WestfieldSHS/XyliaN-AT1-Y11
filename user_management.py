@@ -20,7 +20,9 @@ def load_user_data(name):
         },
         "achievement_progress": {"1": [], "2": [], "3": []},
         "points": 0,
-        "rank": 0
+        "rank": 0,
+        "student_id": "",
+        "class_code": ""
     }
 
     with open(filename, "w", encoding="utf-8") as f:
