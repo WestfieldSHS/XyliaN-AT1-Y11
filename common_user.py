@@ -33,7 +33,6 @@ def load_common_user_data(name):
         "achievement_progress": {"1": [], "2": [], "3": []},
         "points": 0,
         "rank": 0,
-        "user_id": "",
         "user_password": ""
     }
 
