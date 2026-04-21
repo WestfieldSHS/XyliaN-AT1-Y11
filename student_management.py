@@ -66,12 +66,8 @@ def user_info():
         print(f"longest streak: {longest} days🔥")
         print()
     else:
-        current, longest = check_streak(
-            user["streak"]["last_date"],
-            user["streak"]["current"],
-            user["streak"]["longest"],
-            name
-        )
+        # ✅ FIX: call check_streak with ONLY the name
+        current, longest = check_streak(name)
         user["streak"]["current"] = current
         user["streak"]["longest"] = longest
         user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
@@ -84,9 +80,9 @@ def user_info():
         print()
 
 
-
-# MENU SYSTEM (Option B — clean while-loop)
+# MENU SYSTEM
 def student_menu():
+    global user
     while True:
         print("\nMenu--------------------:")
         print("1. View Vocabulary")
@@ -104,11 +100,13 @@ def student_menu():
 
         elif choice == "2":
             word = input("Enter the word you want to add to favorites: ").lower().strip()
-            add_to_favorites(word)
+            # ✅ FIX: pass user into add_to_favorites
+            add_to_favorites(user, word)
 
         elif choice == "3":
             word = input("Enter the word you want to review: ").lower().strip()
-            user_review(word)
+            # ✅ FIX: pass user into user_review
+            user_review(user, word)
 
         elif choice == "4":
             show_user_info()
@@ -187,31 +185,42 @@ def user_review(user, word):
     print(f'Review added for "{word}".')
     print()
 
+
 # STREAK + ACHIEVEMENTS
-def check_streak(last_date, current, longest_streak, name, now=None):
-    if now is None:
-        now = datetime.date.today()
 
+def check_streak(name):
+    user = load_user_data(name)
+    today = datetime.date.today()
+
+    last_date = user["streak"]["last_date"]
+
+    # If last_date is None, this is the user's first day
+    if last_date is None:
+        user["streak"]["current"] = 1
+        user["streak"]["longest"] = max(user["streak"]["longest"], 1)
+        user["streak"]["last_date"] = today.strftime("%Y-%m-%d")
+        save_user_data(user)
+        return user["streak"]["current"], user["streak"]["longest"]
+
+    # Otherwise, parse the stored date
     last_date = datetime.datetime.strptime(last_date, "%Y-%m-%d").date()
-    delta = (now - last_date).days
-    freeze_remaining = user["streak"]["freeze_remaining"]
 
-    if delta == 1:
-        current += 1
-        print(f"Great job, {name}! Your current streak is now {current} days!🔥")
-        if current > longest_streak:
-            longest_streak = current
+    # Calculate streak normally
+    if today == last_date:
+        pass  # same day, streak unchanged
+    elif today == last_date + datetime.timedelta(days=1):
+        user["streak"]["current"] += 1
+    else:
+        user["streak"]["current"] = 1  # streak reset
 
-    elif delta in (2, 3) and freeze_remaining > 0:
-        user["streak"]["freeze_remaining"] -= 1
-        print(f"Welcome back, {name}! Your streak is frozen at {current} days.🔥")
-        print(f"You have {freeze_remaining}❄️ remaining.")
+    # Update longest streak
+    user["streak"]["longest"] = max(user["streak"]["longest"], user["streak"]["current"])
 
-    elif delta > 4:
-        current = 0
-        print(f"Welcome back, {name}! Your streak has been reset to 0.🔥")
+    # Save updated date
+    user["streak"]["last_date"] = today.strftime("%Y-%m-%d")
+    save_user_data(user)
 
-    return current, longest_streak
+    return user["streak"]["current"], user["streak"]["longest"]
 
 
 def check_achievement(user, achievement):
@@ -250,6 +259,7 @@ def show_achievements():
         a_id = str(a["id"])
         unlocked = user["achievement_progress"].get(a_id, [])
         print(f"{a['name']}: {star_bar(unlocked)}")
+
 
 # MAIN ENTRY POINT
 def student_main():

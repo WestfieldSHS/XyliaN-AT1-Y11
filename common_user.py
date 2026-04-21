@@ -1,4 +1,4 @@
-import os, json, datetime, time, random, shutil
+import os, json, datetime, time, random, shutil, getpass  # Importing necessary modules for file handling, data manipulation, and user input
 
 # IMPORTANT: Only import modules, not specific functions (prevents circular imports)
 import rank
@@ -67,8 +67,9 @@ def authenticate_common_user(name, password):
 def common_user_signup():
     print("Let's get you signed up!😊")
     name = input("Enter your full name: ").strip()
-    password = input("Create a password: ").strip()
-    confirm = input("Re-enter password: ").strip()
+    password = getpass.getpass("Create a password: ").strip()
+    #While user type in password, password needs to convert to asterisks for better security
+    confirm = getpass.getpass("Re-enter password: ").strip()
 
     if password != confirm:
         print("Passwords do not match.")
@@ -91,9 +92,12 @@ def common_user_signup():
         except:
             pass
         save_common_user_data(user)
+    print() #blank line for better readability
 
     personalised_question()
+    print() #blank line for better readability
     time_choice()
+    print() #blank line for better readability
     topic_generator()
 
     return user
@@ -101,14 +105,17 @@ def common_user_signup():
 
 def common_user_signin():
     name = input("Enter your full name: ").strip()
-    password = input("Enter your password: ").strip()
+    password = getpass.getpass("Enter your password: ").strip()
+    print()
 
     user = load_common_user_data(name)
 
     if user and user["user_password"] == password:
         print(f"Welcome back, {name}!😊")
-        student_management.check_streak(name)
+        print()
+        current, longest = student_management.check_streak(name)
         streak_message()
+
         return user
 
     print("Invalid name or password.")
@@ -126,6 +133,8 @@ def streak_message():
         print("First time here!🔥")
     print(f"Current streak: {current} days🔥")
     print(f"Longest streak: {longest} days🔥")
+
+    return current, longest
 
 
 # ---------------------- PERSONALISATION QUESTIONS ----------------------
@@ -244,12 +253,23 @@ def common_user_menu():
 
 
 # ---------------------- VOCABULARY ----------------------
-
 def vocab_generator():
     global user
     with open("vocab.json", "r", encoding="utf-8") as f:
         vocab_data = json.load(f)
 
+    # If user skipped topic selection → show random words
+    if not user["selected_topics"]:
+        print("You didn't select any topics, so here are some random words:")
+        print("--------------------")
+        random_words = random.sample(list(vocab_data.keys()), min(5, len(vocab_data)))
+        for word in random_words:
+            info = vocab_data[word]
+            print(f"{word} ({info['type']}): {info['definition']}")
+            print()
+        return
+
+    # Otherwise → filter by selected topics
     selected_vocab = [
         word for word, info in vocab_data.items()
         if info["topic"] in user["selected_topics"]
@@ -258,29 +278,23 @@ def vocab_generator():
     random.shuffle(selected_vocab)
 
     print("Here are your words:")
+    print("--------------------")
     for word in selected_vocab[:5]:
         info = vocab_data[word]
         print(f"{word} ({info['type']}): {info['definition']}")
+        print(f"Example: {info['example']}")
         print()
-
-
-def review_words(word):
-    student_management.user_review(word)
-    student_management.check_achievement(user, user)
-    save_common_user_data(user)
-
-
-# ---------------------- USER INFO ----------------------
+ 
 
 def view_user_information():
     global user
     print(f"Name: {user['name']}")
-    print(f"Country: {user.get('country', 'Not specified')}")
+    print(f"Country: {user.get('country', 'N/A')}")
     print(f"Favourites: {', '.join(user['favourites'])}")
     print(f"Reviews: {len(user['reviews'])}")
-    print(f"Current Streak: {user['streak']['current']}🔥")
-    print(f"Longest Streak: {user['streak']['longest']}🔥")
-    student_management.show_achievements()
+    print(f"Current Streak: {user['streak']['current']} days🔥")
+    print(f"Longest Streak: {user['streak']['longest']} days🔥")
+    print(f"Selected Topics: {', '.join(user['selected_topics'])}")
 
 
 def view_achievements():
