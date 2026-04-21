@@ -2,7 +2,11 @@ import json, os
 from student_management import load_user_data, save_user_data
 
 #ranking system feature
-def calculate_rank():
+def update_user_rank(user):
+    user["rank"] = calculate_rank(user)
+    return user
+
+def calculate_rank(user):
     folder = 'users'
     all_users = []
     #Load all user json files 
@@ -44,3 +48,4 @@ def view_global_rankings():
     all_users.sort(key=lambda x: x['points'], reverse=True)
     for u in all_users:
         print(f"{u['rank']}. {u['name']} - {u['points']} points")
+

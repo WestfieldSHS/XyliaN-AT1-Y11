@@ -1,6 +1,6 @@
 import os, json, datetime, time, random, shutil
 from user_management import load_user_data, save_user_data
-from rank import calculate_rank, display_rank, view_global_rankings
+import rank
 
 # Global user object
 user = None
@@ -118,10 +118,10 @@ def student_menu():
             show_achievements()
 
         elif choice == "6":
-            display_rank(user)
+            rank.display_rank(user)
             choice2 = input("View global rankings? (Yes/No): ").lower().strip()
             if choice2 == "yes":
-                view_global_rankings()
+                rank.view_global_rankings()
 
         elif choice == "7":
             print("Goodbye! Don't forget to come back tomorrow for new words!🔥✨")
@@ -150,7 +150,7 @@ def show_user_info():
     print()
 
 
-def add_to_favorites(word):
+def add_to_favorites(user, word):
     if word in vocab:
         if word not in user["favourites"]:
             user["favourites"].append(word)
@@ -162,7 +162,7 @@ def add_to_favorites(word):
         print(f'"{word}" is not in the vocabulary list.')
 
 
-def user_review(word):
+def user_review(user, word):
     if word not in vocab:
         print(f'"{word}" is not in the vocabulary list.')
         return
@@ -250,7 +250,6 @@ def show_achievements():
         a_id = str(a["id"])
         unlocked = user["achievement_progress"].get(a_id, [])
         print(f"{a['name']}: {star_bar(unlocked)}")
-
 
 # MAIN ENTRY POINT
 def student_main():

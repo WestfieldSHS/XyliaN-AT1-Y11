@@ -2,965 +2,963 @@
   "condemn": {
     "type": "verb",
     "definition": "to officially declare a building unsafe to live in",
-    "example": "The council condemned the old warehouse after the roof collapsed."
+    "example": "The council condemned the old warehouse after the roof collapsed.",
+    "topic": "Science and Technology"
   },
   "demolish": {
     "type": "verb",
     "definition": "to knock down or destroy a building",
-    "example": "They demolished the factory to make space for new apartments."
+    "example": "They demolished the factory to make space for new apartments.",
+    "topic": "Science and Technology"
   },
   "develop": {
     "type": "verb",
     "definition": "to build or improve land or property",
-    "example": "The company plans to develop the empty lot into a shopping centre."
+    "example": "The company plans to develop the empty lot into a shopping centre.",
+    "topic": "Science and Technology"
   },
   "devise": {
     "type": "verb",
     "definition": "to invent or create a plan, method, or device",
-    "example": "The architect devised a clever cooling system for the house."
+    "example": "The architect devised a clever cooling system for the house.",
+    "topic": "Science and Technology"
   },
   "maintain": {
     "type": "verb",
     "definition": "to keep something in good condition",
-    "example": "Tenants must maintain the property to avoid extra fees."
+    "example": "Tenants must maintain the property to avoid extra fees.",
+    "topic": "Science and Technology"
   },
   "occupy": {
     "type": "verb",
     "definition": "to live in or use a space",
-    "example": "No one has occupied the building since it was declared unsafe."
+    "example": "No one has occupied the building since it was declared unsafe.",
+    "topic": "Science and Technology"
   },
   "reconstruct": {
     "type": "verb",
     "definition": "to build something again after it has been damaged",
-    "example": "The team reconstructed the bridge using stronger materials."
+    "example": "The team reconstructed the bridge using stronger materials.",
+    "topic": "Science and Technology"
   },
   "renovate": {
     "type": "verb",
     "definition": "to repair and improve a building to make it new again",
-    "example": "They renovated the apartment before moving in."
+    "example": "They renovated the apartment before moving in.",
+    "topic": "Science and Technology"
   },
   "structure": {
     "type": "noun",
     "definition": "something that has been built, such as a building or bridge",
-    "example": "The structure was strong enough to support heavy loads."
+    "example": "The structure was strong enough to support heavy loads.",
+    "topic": "Science and Technology"
   },
   "frame": {
     "type": "noun",
     "definition": "the supporting skeleton of a building",
-    "example": "The steel frame allowed the skyscraper to reach new heights."
+    "example": "The steel frame allowed the skyscraper to reach new heights.",
+    "topic": "Science and Technology"
   },
   "construction": {
     "type": "noun",
     "definition": "the process of building something",
-    "example": "Construction of the new stadium will take two years."
+    "example": "Construction of the new stadium will take two years.",
+    "topic": "Science and Technology"
   },
   "timber": {
     "type": "noun",
     "definition": "wood prepared for building",
-    "example": "The cottage was built entirely from local timber."
+    "example": "The cottage was built entirely from local timber.",
+    "topic": "Science and Technology"
   },
   "steel": {
     "type": "noun",
     "definition": "a strong metal used in modern construction",
-    "example": "Steel beams support the weight of the high-rise building."
+    "example": "Steel beams support the weight of the high-rise building.",
+    "topic": "Science and Technology"
   },
   "hoist": {
     "type": "verb",
     "definition": "to lift something heavy, usually with ropes or machinery",
-    "example": "Workers hoisted the platform to the upper level."
+    "example": "Workers hoisted the platform to the upper level.",
+    "topic": "Science and Technology"
   },
   "hauling": {
     "type": "verb",
     "definition": "pulling or transporting something heavy",
-    "example": "The system was designed for hauling goods between floors."
+    "example": "The system was designed for hauling goods between floors.",
+    "topic": "Science and Technology"
   },
   "lift shaft": {
     "type": "noun",
     "definition": "the vertical passage in which an elevator moves",
-    "example": "The engineers inspected the lift shaft for safety issues."
-  },
-  "tension": {
-    "type": "noun",
-    "definition": "the tightness or strain in a rope, cable, or material",
-    "example": "If the cable loses tension, the safety device activates."
+    "example": "The engineers inspected the lift shaft for safety issues.",
+    "topic": "Science and Technology"
   },
   "trigger": {
     "type": "verb",
     "definition": "to cause something to start or activate",
-    "example": "A slack rope would trigger the safety mechanism."
+    "example": "A slack rope would trigger the safety mechanism.",
+    "topic": "Science and Technology"
   },
   "device": {
     "type": "noun",
     "definition": "a piece of equipment designed for a specific purpose",
-    "example": "Otis invented a device that prevented elevators from falling."
+    "example": "Otis invented a device that prevented elevators from falling.",
+    "topic": "Science and Technology"
   },
   "internal": {
     "type": "adjective",
     "definition": "located inside something",
-    "example": "The building’s internal frame supported the entire structure."
+    "example": "The building’s internal frame supported the entire structure.",
+    "topic": "Science and Technology"
   },
   "landmark": {
     "type": "noun",
     "definition": "a building or structure that is easily recognisable",
-    "example": "Skyscrapers often become landmarks in major cities."
+    "example": "Skyscrapers often become landmarks in major cities.",
+    "topic": "Science and Technology"
   },
   "innovation": {
     "type": "noun",
     "definition": "a new idea, method, or invention",
-    "example": "The team won an award for their innovation in bridge design."
+    "example": "The team won an award for their innovation in bridge design.",
+    "topic": "Science and Technology"
   },
   "innovative": {
     "type": "adjective",
     "definition": "using new and creative ideas",
-    "example": "They used an innovative approach to avoid nails or screws."
+    "example": "They used an innovative approach to avoid nails or screws.",
+    "topic": "Science and Technology"
   },
   "engineer": {
     "type": "noun",
     "definition": "a person who designs or builds machines, structures, or systems",
-    "example": "The engineer tested the model to ensure it was safe."
+    "example": "The engineer tested the model to ensure it was safe.",
+    "topic": "Science and Technology"
   },
   "design": {
     "type": "verb/noun",
     "definition": "to plan or create; the plan or drawing of something",
-    "example": "The students designed a bridge using only timber."
+    "example": "The students designed a bridge using only timber.",
+    "topic": "Science and Technology"
   },
-
   "foundation": {
     "type": "noun",
     "definition": "the solid base on which a building is constructed",
-    "example": "The foundation must be strong to support the entire structure."
+    "example": "The foundation must be strong to support the entire structure.",
+    "topic": "Science and Technology"
   },
   "insulation": {
     "type": "noun",
     "definition": "material used to prevent heat, sound, or electricity from escaping",
-    "example": "Good insulation keeps the house warm in winter."
+    "example": "Good insulation keeps the house warm in winter.",
+    "topic": "Science and Technology"
   },
   "reinforce": {
     "type": "verb",
     "definition": "to strengthen a structure using additional materials",
-    "example": "The engineers reinforced the walls with steel bars."
+    "example": "The engineers reinforced the walls with steel bars.",
+    "topic": "Science and Technology"
   },
   "assemble": {
     "type": "verb",
     "definition": "to put parts together to form a structure",
-    "example": "Workers assembled the prefabricated panels on-site."
+    "example": "Workers assembled the prefabricated panels on-site.",
+    "topic": "Science and Technology"
   },
   "prefabricated": {
     "type": "adjective",
     "definition": "built in sections in a factory and transported for assembly",
-    "example": "Prefabricated homes can be built much faster than traditional ones."
+    "example": "Prefabricated homes can be built much faster than traditional ones.",
+    "topic": "Science and Technology"
   },
   "sustainable": {
     "type": "adjective",
     "definition": "environmentally friendly and resource-efficient",
-    "example": "Sustainable materials reduce the building’s carbon footprint."
+    "example": "Sustainable materials reduce the building’s carbon footprint.",
+    "topic": "Science and Technology"
   },
   "load-bearing": {
     "type": "adjective",
     "definition": "supporting the weight of a structure",
-    "example": "The load-bearing walls cannot be removed without reinforcement."
+    "example": "The load-bearing walls cannot be removed without reinforcement.",
+    "topic": "Science and Technology"
   },
-
   "concrete": {
     "type": "noun",
     "definition": "a building material made from cement, sand, and gravel",
-    "example": "The bridge pillars were made of reinforced concrete."
+    "example": "The bridge pillars were made of reinforced concrete.",
+    "topic": "Science and Technology"
   },
   "brickwork": {
     "type": "noun",
     "definition": "the construction or pattern of bricks in a wall",
-    "example": "The brickwork on the old house was beautifully detailed."
+    "example": "The brickwork on the old house was beautifully detailed.",
+    "topic": "Science and Technology"
   },
   "mortar": {
     "type": "noun",
     "definition": "a mixture used to bind bricks or stones",
-    "example": "The mason applied fresh mortar between the stones."
+    "example": "The mason applied fresh mortar between the stones.",
+    "topic": "Science and Technology"
   },
   "plaster": {
     "type": "noun",
     "definition": "a material used to coat walls and ceilings",
-    "example": "The ceiling was finished with smooth plaster."
+    "example": "The ceiling was finished with smooth plaster.",
+    "topic": "Science and Technology"
   },
   "glazing": {
     "type": "noun",
     "definition": "glass installed in windows or doors",
-    "example": "Double glazing improves energy efficiency."
+    "example": "Double glazing improves energy efficiency.",
+    "topic": "Science and Technology"
   },
   "paneling": {
     "type": "noun",
     "definition": "wooden or decorative panels covering a wall",
-    "example": "The living room featured elegant wooden paneling."
+    "example": "The living room featured elegant wooden paneling.",
+    "topic": "Science and Technology"
   },
-
   "aesthetic": {
     "type": "adjective",
     "definition": "related to beauty or artistic style",
-    "example": "The building’s aesthetic appeal comes from its clean lines."
+    "example": "The building’s aesthetic appeal comes from its clean lines.",
+    "topic": "Science and Technology"
   },
   "ergonomic": {
     "type": "adjective",
     "definition": "designed for comfort and efficiency",
-    "example": "The ergonomic layout of the kitchen makes cooking easier."
+    "example": "The ergonomic layout of the kitchen makes cooking easier.",
+    "topic": "Science and Technology"
   },
   "blueprint": {
     "type": "noun",
     "definition": "a detailed technical drawing of a building",
-    "example": "The architect reviewed the blueprint before construction began."
+    "example": "The architect reviewed the blueprint before construction began.",
+    "topic": "Science and Technology"
   },
   "façade": {
     "type": "noun",
     "definition": "the front or exterior face of a building",
-    "example": "The glass façade reflects the surrounding skyline."
+    "example": "The glass façade reflects the surrounding skyline.",
+    "topic": "Science and Technology"
   },
   "layout": {
     "type": "noun",
     "definition": "the arrangement of rooms or elements in a space",
-    "example": "The open-plan layout creates a spacious feel."
+    "example": "The open-plan layout creates a spacious feel.",
+    "topic": "Science and Technology"
   },
   "ventilation": {
     "type": "noun",
     "definition": "the movement of air through a building",
-    "example": "Good ventilation prevents moisture buildup."
+    "example": "Good ventilation prevents moisture buildup.",
+    "topic": "Science and Technology"
   },
-
   "mechanism": {
     "type": "noun",
     "definition": "a system of parts working together in a machine",
-    "example": "The locking mechanism failed due to rust."
+    "example": "The locking mechanism failed due to rust.",
+    "topic": "Science and Technology"
   },
   "counterweight": {
     "type": "noun",
     "definition": "a weight that balances another weight",
-    "example": "Elevators use counterweights to reduce motor strain."
+    "example": "Elevators use counterweights to reduce motor strain.",
+    "topic": "Science and Technology"
   },
   "hydraulic": {
     "type": "adjective",
     "definition": "operated by the pressure of a fluid",
-    "example": "Hydraulic lifts are common in low-rise buildings."
+    "example": "Hydraulic lifts are common in low-rise buildings.",
+    "topic": "Science and Technology"
   },
   "automation": {
     "type": "noun",
     "definition": "the use of machines to perform tasks automatically",
-    "example": "Home automation systems control lighting and heating."
+    "example": "Home automation systems control lighting and heating.",
+    "topic": "Science and Technology"
   },
   "sensor": {
     "type": "noun",
     "definition": "a device that detects changes in the environment",
-    "example": "Motion sensors turn on the lights automatically."
+    "example": "Motion sensors turn on the lights automatically.",
+    "topic": "Science and Technology"
   },
-
   "appliance": {
     "type": "noun",
     "definition": "a machine used in the home",
-    "example": "Modern appliances make housework easier."
+    "example": "Modern appliances make housework easier.",
+    "topic": "Science and Technology"
   },
   "smart home": {
     "type": "noun",
     "definition": "a home equipped with automated digital systems",
-    "example": "The smart home adjusts the temperature automatically."
+    "example": "The smart home adjusts the temperature automatically.",
+    "topic": "Science and Technology"
   },
   "energy-efficient": {
     "type": "adjective",
     "definition": "using less energy to perform the same function",
-    "example": "Energy-efficient windows reduce heating costs."
+    "example": "Energy-efficient windows reduce heating costs.",
+    "topic": "Science and Technology"
   },
   "gadget": {
     "type": "noun",
     "definition": "a small, useful device",
-    "example": "The house of the future was filled with gadgets."
+    "example": "The house of the future was filled with gadgets.",
+    "topic": "Science and Technology"
   },
-
   "scaffolding": {
     "type": "noun",
     "definition": "temporary platforms used during construction",
-    "example": "Workers stood on scaffolding to repair the roof."
+    "example": "Workers stood on scaffolding to repair the roof.",
+    "topic": "Science and Technology"
   },
   "crane": {
     "type": "noun",
     "definition": "a tall machine used for lifting heavy objects",
-    "example": "The crane lifted steel beams into place."
+    "example": "The crane lifted steel beams into place.",
+    "topic": "Science and Technology"
   },
   "welding": {
     "type": "noun",
     "definition": "joining metal parts by heating them",
-    "example": "Welding is essential in steel-frame construction."
+    "example": "Welding is essential in steel-frame construction.",
+    "topic": "Science and Technology"
   },
   "prototype": {
     "type": "noun",
     "definition": "the first working example of a machine or device",
-    "example": "The prototype was tested before mass production began."
+    "example": "The prototype was tested before mass production began.",
+    "topic": "Science and Technology"
   },
   "virtual": {
     "type": "adjective",
     "definition": "almost real; simulated by computer",
-    "example": "Virtual reality allows users to explore digital worlds."
+    "example": "Virtual reality allows users to explore digital worlds.",
+    "topic": "Science and Technology"
   },
   "state-of-the-art": {
     "type": "adjective",
     "definition": "very modern; using the latest technology",
-    "example": "The lab is equipped with state-of-the-art computers."
+    "example": "The lab is equipped with state-of-the-art computers.",
+    "topic": "Science and Technology"
   },
   "exceed": {
     "type": "verb",
     "definition": "to be greater than expected",
-    "example": "Sales exceeded all expectations last quarter."
+    "example": "Sales exceeded all expectations last quarter.",
+    "topic": "Science and Technology"
   },
   "digital": {
     "type": "adjective",
     "definition": "relating to computers or electronic technology",
-    "example": "Digital devices are now part of everyday life."
+    "example": "Digital devices are now part of everyday life.",
+    "topic": "Science and Technology"
   },
   "screen": {
     "type": "noun",
     "definition": "a surface on which images or data are displayed",
-    "example": "The screen went black during the presentation."
+    "example": "The screen went black during the presentation.",
+    "topic": "Science and Technology"
   },
   "computerised": {
     "type": "adjective",
     "definition": "controlled or operated by computer",
-    "example": "The system is fully computerised and requires no manual input."
+    "example": "The system is fully computerised and requires no manual input.",
+    "topic": "Science and Technology"
   },
   "automated": {
     "type": "adjective",
     "definition": "operated automatically by machines or computers",
-    "example": "The warehouse uses an automated sorting system."
+    "example": "The warehouse uses an automated sorting system.",
+    "topic": "Science and Technology"
   },
   "remote control": {
     "type": "noun",
     "definition": "a device used to operate machines from a distance",
-    "example": "She used the remote control to change the channel."
+    "example": "She used the remote control to change the channel.",
+    "topic": "Science and Technology"
   },
   "wireless connection": {
     "type": "noun",
     "definition": "a network connection without physical cables",
-    "example": "My phone connects to the internet via a wireless connection."
+    "example": "My phone connects to the internet via a wireless connection.",
+    "topic": "Science and Technology"
   },
   "labour-saving": {
     "type": "adjective",
     "definition": "designed to reduce the amount of work needed",
-    "example": "The dishwasher is a great labour-saving device."
+    "example": "The dishwasher is a great labour-saving device.",
+    "topic": "Science and Technology"
   },
   "cyberspace": {
     "type": "noun",
     "definition": "the virtual environment of the internet",
-    "example": "Many people store their data in cyberspace."
+    "example": "Many people store their data in cyberspace.",
+    "topic": "Science and Technology"
   },
   "cyber addiction": {
     "type": "noun",
     "definition": "excessive use of digital devices or the internet",
-    "example": "Cyber addiction is becoming a concern among teenagers."
+    "example": "Cyber addiction is becoming a concern among teenagers.",
+    "topic": "Science and Technology"
   },
   "silicon chip": {
     "type": "noun",
     "definition": "a small piece of silicon used in electronics to store data",
-    "example": "The silicon chip made computers smaller and faster."
+    "example": "The silicon chip made computers smaller and faster.",
+    "topic": "Science and Technology"
   },
   "scroll": {
     "type": "verb",
     "definition": "to move up or down on a screen",
-    "example": "Scroll down to read the rest of the article."
+    "example": "Scroll down to read the rest of the article.",
+    "topic": "Science and Technology"
   },
   "keyboard": {
     "type": "noun",
     "definition": "a set of keys used to input data into a computer",
-    "example": "She typed the report using a wireless keyboard."
+    "example": "She typed the report using a wireless keyboard.",
+    "topic": "Science and Technology"
   },
   "function": {
     "type": "noun",
     "definition": "the purpose or role of something",
-    "example": "Each button has a different function."
+    "example": "Each button has a different function.",
+    "topic": "Science and Technology"
   },
   "display": {
     "type": "verb",
     "definition": "to show something on a screen",
-    "example": "The monitor displays the system status."
+    "example": "The monitor displays the system status.",
+    "topic": "Science and Technology"
   },
   "feature": {
     "type": "noun",
     "definition": "a distinctive attribute or aspect of something",
-    "example": "The phone’s best feature is its camera."
+    "example": "The phone’s best feature is its camera.",
+    "topic": "Science and Technology"
   },
   "store": {
     "type": "verb",
     "definition": "to save or keep data or items",
-    "example": "You can store files on the cloud."
+    "example": "You can store files on the cloud.",
+    "topic": "Science and Technology"
   },
   "data": {
     "type": "noun",
     "definition": "information, especially in digital form",
-    "example": "The app collects user data for analysis."
+    "example": "The app collects user data for analysis.",
+    "topic": "Science and Technology"
   },
   "processor": {
     "type": "noun",
     "definition": "the part of a computer that performs calculations",
-    "example": "This laptop has a fast processor for gaming."
-  },
-  "gadget": {
-    "type": "noun",
-    "definition": "a small, useful electronic device",
-    "example": "Smartwatches are popular gadgets among tech lovers."
+    "example": "This laptop has a fast processor for gaming.",
+    "topic": "Science and Technology"
   },
   "technological era": {
     "type": "noun",
     "definition": "a period defined by rapid technological development",
-    "example": "We are living in a technological era of constant innovation."
+    "example": "We are living in a technological era of constant innovation.",
+    "topic": "Science and Technology"
   },
   "digital era": {
     "type": "noun",
     "definition": "a time when digital technology dominates daily life",
-    "example": "The digital era has transformed how we communicate."
+    "example": "The digital era has transformed how we communicate.",
+    "topic": "Science and Technology"
   },
   "computer program": {
     "type": "noun",
     "definition": "a set of instructions that a computer follows",
-    "example": "He wrote a computer program to sort the data."
+    "example": "He wrote a computer program to sort the data.",
+    "topic": "Science and Technology"
   },
   "television programme": {
     "type": "noun",
     "definition": "a scheduled show broadcast on TV",
-    "example": "My favourite television programme airs on Friday nights."
+    "example": "My favourite television programme airs on Friday nights.",
+    "topic": "Science and Technology"
   },
-  "urbanisation": {
-    "type": "noun",
-    "definition": "the process by which cities grow and populations increase in urban areas",
-    "example": "Rapid urbanisation has led to overcrowded cities."
-  },
-  "megacity": {
-    "type": "noun",
-    "definition": "a city with a population of over 10 million people",
-    "example": "There are now over 20 megacities around the world."
-  },
-  "infrastructure": {
-    "type": "noun",
-    "definition": "the basic systems and services needed for a city to function",
-    "example": "Poor infrastructure can lead to traffic and sanitation problems."
-  },
-  "pressing": {
-    "type": "adjective",
-    "definition": "urgent or needing immediate attention",
-    "example": "Housing shortages are a pressing issue in urban areas."
-  },
-  "staggering": {
-    "type": "adjective",
-    "definition": "very large or surprising",
-    "example": "The rate of urban growth is staggering."
-  },
-  "adequate": {
-    "type": "adjective",
-    "definition": "sufficient or acceptable in quality or quantity",
-    "example": "Many slum areas lack adequate water supply."
-  },
-  "booming": {
-    "type": "adjective",
-    "definition": "growing rapidly and successfully",
-    "example": "The city’s booming economy attracts many migrants."
-  },
-  "catastrophic": {
-    "type": "adjective",
-    "definition": "extremely harmful or disastrous",
-    "example": "A lack of planning can lead to catastrophic urban failures."
-  },
-  "resolve": {
-    "type": "verb",
-    "definition": "to find a solution to a problem",
-    "example": "The council worked to resolve the housing crisis."
-  },
-  "compromise": {
-    "type": "noun",
-    "definition": "an agreement where both sides give up something",
-    "example": "They reached a compromise on the new building regulations."
-  },
-
   "flora": {
     "type": "noun",
     "definition": "plants of a particular region or time",
-    "example": "The flora of Australia includes many unique species."
+    "example": "The flora of Australia includes many unique species.",
+    "topic": "Science and Technology"
   },
   "fauna": {
     "type": "noun",
     "definition": "animals of a particular region or time",
-    "example": "The fauna of Africa includes lions and elephants."
+    "example": "The fauna of Africa includes lions and elephants.",
+    "topic": "Science and Technology"
   },
   "habitat": {
     "type": "noun",
     "definition": "the natural home of a plant or animal",
-    "example": "Meerkats live in dry, open habitats."
+    "example": "Meerkats live in dry, open habitats.",
+    "topic": "Science and Technology"
   },
   "predator": {
     "type": "noun",
     "definition": "an animal that hunts and eats other animals",
-    "example": "The lion is a predator at the top of the food chain."
+    "example": "The lion is a predator at the top of the food chain.",
+    "topic": "Science and Technology"
   },
   "natural balance": {
     "type": "noun",
     "definition": "the equilibrium between organisms and their environment",
-    "example": "Pollution can disrupt the natural balance of ecosystems."
+    "example": "Pollution can disrupt the natural balance of ecosystems.",
+    "topic": "Science and Technology"
   },
   "introduced species": {
     "type": "noun",
     "definition": "a species brought to a new area by humans",
-    "example": "The cane toad is an introduced species in Australia."
+    "example": "The cane toad is an introduced species in Australia.",
+    "topic": "Science and Technology"
   },
   "genetically modified": {
     "type": "adjective",
     "definition": "having genes altered by scientific methods",
-    "example": "Genetically modified crops resist pests better than natural ones."
+    "example": "Genetically modified crops resist pests better than natural ones.",
+    "topic": "Science and Technology"
   },
   "ecological balance": {
     "type": "noun",
     "definition": "the stable relationship between living organisms and their environment",
-    "example": "Deforestation threatens the ecological balance."
+    "example": "Deforestation threatens the ecological balance.",
+    "topic": "Science and Technology"
   },
   "extinct": {
     "type": "adjective",
     "definition": "no longer existing",
-    "example": "Many species have become extinct due to habitat loss."
+    "example": "Many species have become extinct due to habitat loss.",
+    "topic": "Science and Technology"
   },
   "vulnerable": {
     "type": "adjective",
     "definition": "at risk of harm or extinction",
-    "example": "Koalas are vulnerable due to habitat destruction."
+    "example": "Koalas are vulnerable due to habitat destruction.",
+    "topic": "Science and Technology"
   },
   "endangered": {
     "type": "adjective",
     "definition": "at serious risk of extinction",
-    "example": "The panda is an endangered species."
+    "example": "The panda is an endangered species.",
+    "topic": "Science and Technology"
   },
   "resistant": {
     "type": "adjective",
     "definition": "not affected by something",
-    "example": "Some insects are resistant to pesticides."
+    "example": "Some insects are resistant to pesticides.",
+    "topic": "Science and Technology"
   },
   "disastrous": {
     "type": "adjective",
     "definition": "extremely bad or unsuccessful",
-    "example": "The introduction of cane toads was disastrous for native wildlife."
+    "example": "The introduction of cane toads was disastrous for native wildlife.",
+    "topic": "Science and Technology"
   },
   "hedgehog": {
     "type": "noun",
     "definition": "a small mammal with spines on its back",
-    "example": "Hedgehogs roll into a ball to protect themselves."
+    "example": "Hedgehogs roll into a ball to protect themselves.",
+    "topic": "Science and Technology"
   },
   "hoglet": {
     "type": "noun",
     "definition": "a baby hedgehog",
-    "example": "A litter of hoglets is born twice a year."
+    "example": "A litter of hoglets is born twice a year.",
+    "topic": "Science and Technology"
   },
   "quill": {
     "type": "noun",
     "definition": "a stiff, sharp spine on a hedgehog’s back",
-    "example": "Hedgehogs use their quills for defense."
+    "example": "Hedgehogs use their quills for defense.",
+    "topic": "Science and Technology"
   },
   "forage": {
     "type": "verb",
     "definition": "to search for food",
-    "example": "Hedgehogs forage at night for insects and slugs."
+    "example": "Hedgehogs forage at night for insects and slugs.",
+    "topic": "Science and Technology"
   },
   "hibernate": {
     "type": "verb",
     "definition": "to sleep through the winter",
-    "example": "Some hedgehogs hibernate during cold months."
+    "example": "Some hedgehogs hibernate during cold months.",
+    "topic": "Science and Technology"
   },
   "marsupial": {
     "type": "noun",
     "definition": "a mammal that carries its young in a pouch",
-    "example": "Kangaroos are marsupials native to Australia."
+    "example": "Kangaroos are marsupials native to Australia.",
+    "topic": "Science and Technology"
   },
   "monotreme": {
     "type": "noun",
     "definition": "an egg-laying mammal",
-    "example": "The platypus is a monotreme found in Australia."
+    "example": "The platypus is a monotreme found in Australia.",
+    "topic": "Science and Technology"
   },
   "genome": {
     "type": "noun",
     "definition": "the complete set of genetic material of an organism",
-    "example": "Scientists study the hedgehog genome to learn about evolution."
+    "example": "Scientists study the hedgehog genome to learn about evolution.",
+    "topic": "Science and Technology"
   },
   "biodiversity": {
     "type": "noun",
     "definition": "the variety of life in a particular habitat or ecosystem",
-    "example": "Rainforests are known for their high biodiversity."
-  },  
+    "example": "Rainforests are known for their high biodiversity.",
+    "topic": "Science and Technology"
+  },
   "puberty": {
     "type": "noun",
     "definition": "the stage of life when a child's body begins to develop into an adult body",
-    "example": "Puberty includes physical and emotional changes as the body matures."
+    "example": "Puberty includes physical and emotional changes as the body matures.",
+    "topic": "Humanities and Social Science"
   },
   "consent": {
     "type": "noun",
     "definition": "a clear and voluntary agreement to participate in an activity",
-    "example": "Consent must be freely given and can be withdrawn at any time."
+    "example": "Consent must be freely given and can be withdrawn at any time.",
+    "topic": "Humanities and Social Science"
   },
   "reproductivesystem": {
     "type": "noun",
     "definition": "the group of organs involved in producing offspring",
-    "example": "The reproductive system works differently in males and females."
+    "example": "The reproductive system works differently in males and females.",
+    "topic": "Humanities and Social Science"
   },
   "menstruation": {
     "type": "noun",
     "definition": "the monthly shedding of the uterine lining in people with a uterus",
-    "example": "Menstruation is a normal part of the reproductive cycle."
+    "example": "Menstruation is a normal part of the reproductive cycle.",
+    "topic": "Humanities and Social Science"
   },
   "fertilization": {
     "type": "noun",
     "definition": "the process in which a sperm cell and an egg cell combine",
-    "example": "Fertilization usually occurs in the fallopian tube."
+    "example": "Fertilization usually occurs in the fallopian tube.",
+    "topic": "Humanities and Social Science"
   },
   "contraception": {
     "type": "noun",
     "definition": "methods or devices used to prevent pregnancy",
-    "example": "Contraception helps individuals plan if and when they want children."
+    "example": "Contraception helps individuals plan if and when they want children.",
+    "topic": "Humanities and Social Science"
   },
   "hormones": {
     "type": "noun",
     "definition": "chemical messengers in the body that regulate growth, mood, and development",
-    "example": "Hormones play a major role in the changes experienced during puberty."
+    "example": "Hormones play a major role in the changes experienced during puberty.",
+    "topic": "Humanities and Social Science"
   },
   "sexualhealth": {
     "type": "noun",
     "definition": "a state of physical, emotional, and social well‑being related to sexuality",
-    "example": "Sexual health includes understanding boundaries, consent, and safe practices."
+    "example": "Sexual health includes understanding boundaries, consent, and safe practices.",
+    "topic": "Humanities and Social Science"
   },
   "anatomy": {
     "type": "noun",
     "definition": "the study of the structure of the human body",
-    "example": "Learning anatomy helps students understand how their bodies function."
+    "example": "Learning anatomy helps students understand how their bodies function.",
+    "topic": "Humanities and Social Science"
   },
   "communication": {
     "type": "noun",
     "definition": "the exchange of information, feelings, or ideas between people",
-    "example": "Healthy relationships rely on open and respectful communication."
+    "example": "Healthy relationships rely on open and respectful communication.",
+    "topic": "Humanities and Social Science"
   },
   "sibling": {
     "type": "noun",
     "definition": "a brother or sister",
-    "example": "She has a close relationship with her sibling."
+    "example": "She has a close relationship with her sibling.",
+    "topic": "Humanities and Social Science"
   },
   "adolescence": {
     "type": "noun",
     "definition": "the stage between childhood and adulthood",
-    "example": "Adolescence is a period of rapid physical and emotional change."
+    "example": "Adolescence is a period of rapid physical and emotional change.",
+    "topic": "Humanities and Social Science"
   },
   "nurture": {
     "type": "verb",
     "definition": "to help someone grow and develop",
-    "example": "Parents nurture their children by giving them love and support."
+    "example": "Parents nurture their children by giving them love and support.",
+    "topic": "Humanities and Social Science"
   },
   "interaction": {
     "type": "noun",
     "definition": "communication or direct involvement with someone",
-    "example": "Positive interaction helps children develop social skills."
+    "example": "Positive interaction helps children develop social skills.",
+    "topic": "Humanities and Social Science"
   },
   "rewarding": {
     "type": "adjective",
     "definition": "giving a lot of pleasure or satisfaction",
-    "example": "Working with young children can be very rewarding."
+    "example": "Working with young children can be very rewarding.",
+    "topic": "Humanities and Social Science"
   },
   "milestone": {
     "type": "noun",
     "definition": "an important stage or event in development",
-    "example": "Learning to walk is a major milestone for toddlers."
+    "example": "Learning to walk is a major milestone for toddlers.",
+    "topic": "Humanities and Social Science"
   },
   "cognitive": {
     "type": "adjective",
     "definition": "related to thinking, understanding, and learning",
-    "example": "Cognitive skills improve rapidly during early childhood."
+    "example": "Cognitive skills improve rapidly during early childhood.",
+    "topic": "Humanities and Social Science"
   },
   "selfconscious": {
     "type": "adjective",
     "definition": "uncomfortably aware of oneself",
-    "example": "Teenagers often feel self-conscious about their appearance."
+    "example": "Teenagers often feel self-conscious about their appearance.",
+    "topic": "Humanities and Social Science"
   },
   "rebellious": {
     "type": "adjective",
     "definition": "resisting authority or control",
-    "example": "Many teenagers go through a rebellious phase."
+    "example": "Many teenagers go through a rebellious phase.",
+    "topic": "Humanities and Social Science"
   },
   "immature": {
     "type": "adjective",
     "definition": "not fully developed emotionally or mentally",
-    "example": "Some children behave in an immature way compared to their peers."
+    "example": "Some children behave in an immature way compared to their peers.",
+    "topic": "Humanities and Social Science"
   },
   "nurturing": {
     "type": "adjective",
     "definition": "caring and supportive",
-    "example": "A nurturing teacher helps students feel safe and confident."
+    "example": "A nurturing teacher helps students feel safe and confident.",
+    "topic": "Humanities and Social Science"
   },
   "tantrum": {
     "type": "noun",
     "definition": "an uncontrolled outburst of anger",
-    "example": "Toddlers often throw a tantrum when they are frustrated."
+    "example": "Toddlers often throw a tantrum when they are frustrated.",
+    "topic": "Humanities and Social Science"
   },
   "unsteady": {
     "type": "adjective",
     "definition": "not stable or balanced",
-    "example": "A baby learning to walk may be unsteady on their feet."
+    "example": "A baby learning to walk may be unsteady on their feet.",
+    "topic": "Humanities and Social Science"
   },
   "tolerant": {
     "type": "adjective",
     "definition": "accepting of others’ differences",
-    "example": "Good leaders are tolerant of different opinions."
+    "example": "Good leaders are tolerant of different opinions.",
+    "topic": "Humanities and Social Science"
   },
   "transition": {
     "type": "noun",
     "definition": "a period of change from one stage to another",
-    "example": "Moving to high school is a big transition for many students."
+    "example": "Moving to high school is a big transition for many students.",
+    "topic": "Humanities and Social Science"
   },
   "growthspurt": {
     "type": "noun",
     "definition": "a sudden increase in height or size",
-    "example": "Teenagers often experience a growth spurt during puberty."
+    "example": "Teenagers often experience a growth spurt during puberty.",
+    "topic": "Humanities and Social Science"
   },
   "clumsy": {
     "type": "adjective",
     "definition": "awkward in movement",
-    "example": "Rapid growth can make teenagers feel clumsy."
+    "example": "Rapid growth can make teenagers feel clumsy.",
+    "topic": "Humanities and Social Science"
   },
   "abstract": {
     "type": "adjective",
     "definition": "relating to ideas rather than physical objects",
-    "example": "Teenagers begin to understand abstract concepts."
+    "example": "Teenagers begin to understand abstract concepts.",
+    "topic": "Humanities and Social Science"
   },
   "memory": {
     "type": "noun",
     "definition": "the ability to remember information",
-    "example": "Her memory for names is excellent."
+    "example": "Her memory for names is excellent.",
+    "topic": "Humanities and Social Science"
   },
   "recall": {
     "type": "verb",
     "definition": "to remember something",
-    "example": "He couldn’t recall the answer during the test."
+    "example": "He couldn’t recall the answer during the test.",
+    "topic": "Humanities and Social Science"
   },
-  "slippedmymind": {
+  "slipped my mind": {
     "type": "phrase",
     "definition": "to forget something",
-    "example": "Sorry, the meeting completely slipped my mind."
+    "example": "Sorry, the meeting completely slipped my mind.",
+    "topic": "Humanities and Social Science"
   },
   "nutritious": {
     "type": "adjective",
     "definition": "containing substances needed for good health",
-    "example": "Fruit and vegetables are highly nutritious."
+    "example": "Fruit and vegetables are highly nutritious.",
+    "topic": "Humanities and Social Science"
   },
   "nutrients": {
     "type": "noun",
     "definition": "substances needed for growth and health",
-    "example": "These foods provide essential nutrients."
+    "example": "These foods provide essential nutrients.",
+    "topic": "Humanities and Social Science"
   },
   "overweight": {
     "type": "adjective",
     "definition": "weighing more than is healthy",
-    "example": "Eating too much fast food can make you overweight."
+    "example": "Eating too much fast food can make you overweight.",
+    "topic": "Humanities and Social Science"
   },
   "overeating": {
     "type": "noun",
     "definition": "eating too much food",
-    "example": "Skipping meals can lead to overeating later."
+    "example": "Skipping meals can lead to overeating later.",
+    "topic": "Humanities and Social Science"
   },
   "ingredients": {
     "type": "noun",
     "definition": "the items used to make a dish",
-    "example": "Always check the ingredients for allergens."
-  },
-  "maintain": {
-    "type": "verb",
-    "definition": "to keep something at the same level",
-    "example": "Exercise helps maintain a healthy weight."
+    "example": "Always check the ingredients for allergens.",
+    "topic": "Humanities and Social Science"
   },
   "aerobic": {
     "type": "adjective",
     "definition": "relating to exercise that increases heart and lung activity",
-    "example": "Running is a form of aerobic exercise."
+    "example": "Running is a form of aerobic exercise.",
+    "topic": "Humanities and Social Science"
   },
   "obese": {
     "type": "adjective",
     "definition": "extremely overweight",
-    "example": "A poor diet can lead to becoming obese."
+    "example": "A poor diet can lead to becoming obese.",
+    "topic": "Humanities and Social Science"
   },
   "prevent": {
     "type": "verb",
     "definition": "to stop something from happening",
-    "example": "A healthy lifestyle can prevent many illnesses."
+    "example": "A healthy lifestyle can prevent many illnesses.",
+    "topic": "Humanities and Social Science"
   },
   "allergy": {
     "type": "noun",
     "definition": "a condition where the body reacts to certain foods or substances",
-    "example": "He has a severe nut allergy."
+    "example": "He has a severe nut allergy.",
+    "topic": "Humanities and Social Science"
   },
   "stress": {
     "type": "noun",
     "definition": "mental or emotional strain",
-    "example": "Too much stress can affect your sleep."
+    "example": "Too much stress can affect your sleep.",
+    "topic": "Humanities and Social Science"
   },
   "insomnia": {
     "type": "noun",
     "definition": "difficulty falling or staying asleep",
-    "example": "Stress often leads to insomnia."
+    "example": "Stress often leads to insomnia.",
+    "topic": "Humanities and Social Science"
   },
   "tension": {
     "type": "noun",
     "definition": "mental or emotional strain",
-    "example": "Tension headaches are common during exams."
+    "example": "Tension headaches are common during exams.",
+    "topic": "Humanities and Social Science"
   },
   "appetite": {
     "type": "noun",
     "definition": "a desire to eat",
-    "example": "Stress can reduce your appetite."
+    "example": "Stress can reduce your appetite.",
+    "topic": "Humanities and Social Science"
   },
   "hyperactivity": {
     "type": "noun",
     "definition": "excessive movement or activity",
-    "example": "Stress may trigger thyroid hyperactivity."
+    "example": "Stress may trigger thyroid hyperactivity.",
+    "topic": "Humanities and Social Science"
   },
   "leisure": {
     "type": "noun",
     "definition": "free time used for enjoyment",
-    "example": "Leisure activities help reduce stress."
+    "example": "Leisure activities help reduce stress.",
+    "topic": "Humanities and Social Science"
   },
   "fulfilment": {
     "type": "noun",
     "definition": "a deep sense of satisfaction",
-    "example": "Helping others gives her a sense of fulfilment."
+    "example": "Helping others gives her a sense of fulfilment.",
+    "topic": "Humanities and Social Science"
   },
   "insight": {
     "type": "noun",
     "definition": "a deep understanding of something",
-    "example": "The study gave insight into human behaviour."
+    "example": "The study gave insight into human behaviour.",
+    "topic": "Humanities and Social Science"
   },
   "recreational": {
     "type": "adjective",
     "definition": "related to activities done for enjoyment",
-    "example": "Swimming is a recreational activity."
+    "example": "Swimming is a recreational activity.",
+    "topic": "Humanities and Social Science"
   },
   "personality": {
     "type": "noun",
     "definition": "the combination of characteristics that form a person’s character",
-    "example": "Your hobbies can reflect your personality."
+    "example": "Your hobbies can reflect your personality.",
+    "topic": "Humanities and Social Science"
   },
   "optimist": {
     "type": "noun",
     "definition": "someone who expects positive outcomes",
-    "example": "An optimist sees challenges as opportunities."
+    "example": "An optimist sees challenges as opportunities.",
+    "topic": "Humanities and Social Science"
   },
   "pessimist": {
     "type": "noun",
     "definition": "someone who expects negative outcomes",
-    "example": "A pessimist often worries about the future."
+    "example": "A pessimist often worries about the future.",
+    "topic": "Humanities and Social Science"
   },
   "realist": {
     "type": "noun",
     "definition": "someone who accepts situations as they are",
-    "example": "A realist focuses on practical solutions."
+    "example": "A realist focuses on practical solutions.",
+    "topic": "Humanities and Social Science"
   },
   "standardofliving": {
     "type": "noun",
     "definition": "the level of wealth and comfort available to a person",
-    "example": "The standard of living has improved over time."
+    "example": "The standard of living has improved over time.",
+    "topic": "Humanities and Social Science"
   },
   "qualityoflife": {
     "type": "noun",
     "definition": "the general well-being of a person",
-    "example": "Work-life balance affects quality of life."
+    "example": "Work-life balance affects quality of life.",
+    "topic": "Humanities and Social Science"
   },
   "coordination": {
-      "type": "noun",
-      "definition": "the ability to use different parts of the body smoothly and efficiently",
-      "example": "Children develop better coordination as they grow."
-  },
-  "motorSkills": {
-      "type": "noun",
-      "definition": "abilities required to control the muscles for movement",
-      "example": "Fine motor skills improve when children learn to write."
-  },
-  "peerPressure": {
-      "type": "noun",
-      "definition": "influence from members of one's peer group",
-      "example": "Peer pressure can affect teenagers' decisions."
-  },
-  "development": {
-      "type": "noun",
-      "definition": "the process of growing or improving",
-      "example": "Early childhood development shapes future learning."
-  },
-  "stimulus": {
-      "type": "noun",
-      "definition": "something that causes a reaction or response",
-      "example": "Bright colors act as a stimulus for infants."
-  },
-  "bonding": {
-      "type": "noun",
-      "definition": "the process of forming a close emotional connection",
-      "example": "Skin-to-skin contact helps bonding between mother and baby."
-  },
-  "discipline": {
-      "type": "noun",
-      "definition": "training people to obey rules or behave correctly",
-      "example": "Consistent discipline helps children learn boundaries."
-  },
-  "curiosity": {
-      "type": "noun",
-      "definition": "a strong desire to learn or know something",
-      "example": "Curiosity drives children to explore their environment."
-  },
-  "independence": {
-      "type": "noun",
-      "definition": "the ability to do things without help",
-      "example": "Toddlers show independence by wanting to do tasks alone."
-  },
-  "attachment": {
-      "type": "noun",
-      "definition": "a deep emotional bond between people",
-      "example": "Secure attachment helps children feel safe."
-  },
-  "wellbeing": {
-      "type": "noun",
-      "definition": "a state of being healthy, happy, and comfortable",
-      "example": "Exercise improves mental and physical wellbeing."
-  },
-  "metabolism": {
-      "type": "noun",
-      "definition": "the chemical processes that occur within the body to maintain life",
-      "example": "A fast metabolism burns calories more quickly."
-  },
-  "endurance": {
-      "type": "noun",
-      "definition": "the ability to sustain physical or mental effort",
-      "example": "Running regularly increases endurance."
-  },
-  "circulation": {
-      "type": "noun",
-      "definition": "the movement of blood through the body",
-      "example": "Exercise improves blood circulation."
-  },
-  "immuneSystem": {
-      "type": "noun",
-      "definition": "the body's defense system against illness",
-      "example": "A balanced diet supports a strong immune system."
-  },
-  "burnout": {
-      "type": "noun",
-      "definition": "a state of emotional, physical, and mental exhaustion",
-      "example": "Working too much can lead to burnout."
-  },
-  "mindfulness": {
-      "type": "noun",
-      "definition": "the practice of being aware and present in the moment",
-      "example": "Mindfulness helps reduce stress and anxiety."
-  },
-  "productivity": {
-      "type": "noun",
-      "definition": "the rate at which work is completed",
-      "example": "Good sleep improves productivity."
-  },
-  "motivation": {
-      "type": "noun",
-      "definition": "the reason or desire to act or achieve something",
-      "example": "Setting goals increases motivation."
-  },
-  "lifestyle": {
-      "type": "noun",
-      "definition": "the way a person lives, including habits and choices",
-      "example": "A healthy lifestyle includes regular exercise and good nutrition."
+    "type": "noun",
+    "definition": "the ability to use different parts of the body together smoothly and efficiently",
+    "example": "Good coordination helps children learn to run and jump confidently.",
+    "topic": "Humanities and Social Science"
   }
 }
+
+
+
+
+
+
 
 

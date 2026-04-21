@@ -102,7 +102,7 @@ def teacher_menu(teacher):
             print("4. View Teacher Info")
             print("5. Logout")
 
-            choice = input("Enter your choice (1-4): ").strip()
+            choice = input("Enter your choice (1-5): ").strip()
 
             if choice == "1":
                 create_class(teacher)

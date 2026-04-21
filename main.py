@@ -3,6 +3,7 @@ import os, shutil #os and shutil modules for handling file operations related to
 import json, datetime, time
 user = None #Initialize user variable to None, it will be assigned after loading user data based on name input
 from user_management import load_user_data, save_user_data #Importing functions to handle user data
+from common_user import common_user_main #Importing the main function for common users to direct them to their menu and features
 from teacher_management import teacher_main
 from student_management import student_main
 def welcome_message():
@@ -14,11 +15,13 @@ def welcome_message():
     role_selection() #Call role selection function to determine if user is a student or teacher and direct them to the appropriate menu
 
 def role_selection():
-    role = input("Are you a student or a teacher? (Enter 'student' or 'teacher'): ").strip().lower()
+    role = input("Are you a student or a teacher or a common user? (Enter 'student' or 'teacher' or 'common'): ").strip().lower()
     if role == 'teacher':
        teacher_main()
     elif role == 'student':
         student_main()
+    elif role == 'common':
+        common_user_main()
     else:
         input("Invalid role. Please enter 'student' or 'teacher' only.🫩  Please enter to try again")
         return role_selection() #Loop role selection until user selects a valid role
