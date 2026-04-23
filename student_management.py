@@ -1,6 +1,7 @@
 import os, json, datetime, time, random, shutil
 from user_management import load_user_data, save_user_data
 import rank
+import turtle #For flying rocket animation in review mode
 
 # Global user object
 user = None
@@ -135,6 +136,7 @@ def show_random_words():
     for word in random.sample(list(vocab.keys()), min(5, len(vocab))):
         info = vocab[word]
         print(f"{word} ({info['type']}): {info['definition']}")
+        print(f"Example: {info['example']}")
         print()
 
 
@@ -185,6 +187,224 @@ def user_review(user, word):
     print(f'Review added for "{word}".')
     print()
 
+def flashcard_review(word):
+    print("\nFlashcard Review--------------------:")
+    print("Press Enter to see the definition, then press Enter again to see the example.")
+
+    random.shuffle(word)
+    score = 0
+
+    for w in word:
+        print(f"\nWord: {w}")
+        input("Press Enter to see the definition...")
+        print(f"Definition: {vocab[w]['definition']}")
+        print()
+        input("Press Enter to see the example...")
+        print(f"Example: {vocab[w]['example']}")
+        print()
+
+        while True:
+            correct = input("Did you get it right? (Yes/No): ").lower().strip()
+            if correct in ["yes", "no"]:
+                if correct == "yes":
+                    score += 1
+                break
+            else:
+                print("Please enter 'Yes' or 'No'.")
+    print(f"\nYour flashcard review score: {score}/{len(word)}")
+
+def review_menu(word):
+    while True:
+        print("\nReview Menu--------------------:")
+        print("1. Flashcard Review")
+        print("2. Quiz Review")
+        print("3. Match Mode")
+        print("4. Flying rocket")
+        print("5. Exit Review")
+
+        choice = input("Please select an option (1-5): ").strip()
+
+        if choice == "1":
+            flashcard_review(word)
+
+        elif choice == "2":
+            quiz_review(word)
+
+        elif choice == "3":
+            match_mode(word)
+
+        elif choice == "4":
+            flying_rocket(word)
+        
+        elif choice == "5":
+            print("Exiting review. Keep up the great work!🔥✨")
+            return student_menu()
+
+        else:
+            print("Invalid option. Please select 1–5.")
+
+#------------DIFFERENT REVIEW MODES (FLASHCARD, QUIZ, MATCH, FLYING ROCKET)------------
+
+import difflib #For fuzzy matching in quiz review
+def quiz_review(word):
+    print("\nQuiz Review--------------------:")
+    score = 0
+
+    for w in word:
+        print(f"\nWord: {w}")
+        answer = input("Enter the definition: ").strip().lower()
+        correct_answer = vocab[w]["definition"].lower()
+
+        # Use difflib to calculate similarity ratio
+        similarity = difflib.SequenceMatcher(None, answer, correct_answer).ratio()
+
+        if similarity >= 0.8:
+            print("Correct!🔥")
+            score += 1
+        elif similarity >= 0.6:
+            print("Almost there! Partial credit awarded.🔥")
+            print(f"The correct definition is: {vocab[w]['definition']}")
+            score += 0.5
+        else:
+            print("Incorrect.🔥")
+            print(f"The correct definition is: {vocab[w]['definition']}")
+
+    print(f"\nYour quiz review score: {score}/{len(word)}")
+
+def match_mode(word):
+    print("\nMatch Mode--------------------:")
+    print("Match the words with their definitions. Enter the number corresponding to the correct definition.")
+    print("You have 10 seconds to answer each word.⏰")
+    time.sleep(3) #Give user time to read instructions
+
+    words_list = [w['word'] for w in word]
+    definitions_list = [vocab[w]['definition'] for w in words_list]
+
+    correct = 0
+
+    for w in words_list:
+        clear()
+        print(f"\nWord: {w}")
+        options = random.sample(definitions_list, min(4, len(definitions_list)))
+        if vocab[w]['definition'] not in options:
+            options[random.randint(0, len(options)-1)] = vocab[w]['definition']
+
+        for i, option in enumerate(options):
+            print(f"{i+1}. {option}")
+
+        start_time = time.time()
+        answer = input("Your answer (1-4): ").strip()
+        end_time = time.time()
+
+        #Visible timer logic
+        for remaining in range(10, 0, -1):
+            print(f"Time remaining: {remaining} seconds", end="\r")
+            time.sleep(1)
+            #Check if user has still have time left to answer
+            if answer is None:
+                answer = input("Your answer (1-4): ").strip()
+                if answer != "":
+                    break
+        if answer is None or answer == "":
+            print("\nTime's up!⏰")
+            correct_answer = vocab[w]['definition']
+            print(f"The correct definition is: {correct_answer}")
+            time.sleep(2)
+            continue
+
+        if answer.isdigit() and 1 <= int(answer) <= len(options):
+            if options[int(answer)-1] == vocab[w]['definition']:
+                print("Correct!🔥")
+                correct += 1
+            else:
+                print("Incorrect.🔥")
+                print(f"The correct definition is: {vocab[w]['definition']}")
+            time.sleep(2)
+
+        else:
+            print("Invalid input. Please enter a number corresponding to the options.")
+    clear()
+    print(f"\nYour match mode score: {correct}/{len(words_list)}")
+    time.sleep(3)
+    choice = (input("Try again? (Yes/No): ").lower().strip())
+
+    if choice == "yes":
+        match_mode(word)
+    else:
+        print("Exiting match mode. Keep up the great work!🔥✨")
+        return review_menu(word)
+    
+def clear(): #Cross-platform clear screen
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+#___________() FLYING ROCKET ANIMATION USING TURTLE ___________
+
+def pixel_art(t, x, y, colour):
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+    t.color(colour)
+    t.begin_fill()
+    for _ in range(4):
+        t.forward(20)
+        t.right(90)
+    t.end_fill()
+
+def rocket__animation_turtle():
+    screen = turtle.Screen()
+    screen.title("FLYING ROCKET!!🚀")
+    screen.bgcolor("black")
+
+    t = turtle.Turtle()
+    t.speed(0)
+    t.hideturtle()
+
+    #Starry background
+    star = turtle.Turtle()
+    star.speed(0)
+    star.hideturtle()
+    star.color("white")
+
+    for _ in range(50): #Number of stars
+        x = random.randint(-300, 300)
+        y = random.randint(-250, 250)
+        star.penup()
+        star.goto(x, y)
+        star.dot(random.randint(2, 5)) #Random star size
+
+    
+    #inspo : 🚀
+    rocket_pixels = [
+        ["", "red", ""],
+        ["", "red", ""],
+        ["grey", "grey", "grey"],
+        ["", "blue", ""],
+        ["grey", "grey", "grey"],
+        ["orange", "yellow", "orange"]
+    ]
+
+
+    # Rocket body
+    for i in range(5):
+        pixel_art(t, 0, i*20, "white")
+
+    # Rocket nose
+    pixel_art(t, 0, 100, "red")
+
+    # Rocket fins
+    pixel_art(t, -20, 0, "blue")
+    pixel_art(t, 20, 0, "blue")
+
+    return screen
+
+
+
+
+
+
+
+        
+        
 
 # STREAK + ACHIEVEMENTS
 

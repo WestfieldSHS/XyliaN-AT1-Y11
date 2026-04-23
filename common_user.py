@@ -1,4 +1,4 @@
-import os, json, datetime, time, random, shutil, getpass  # Importing necessary modules for file handling, data manipulation, and user input
+import os, json, datetime, time, random, shutil  # Importing necessary modules for file handling, data manipulation, and user input
 
 # IMPORTANT: Only import modules, not specific functions (prevents circular imports)
 import rank
@@ -66,9 +66,9 @@ def authenticate_common_user(name, password):
 def common_user_signup():
     print("Let's get you signed up!😊")
     name = input("Enter your full name: ").strip()
-    password = getpass.getpass("Create a password: ").strip()
+    password = input_password("Create a password: ")
     #While user type in password, password needs to convert to asterisks for better security
-    confirm = getpass.getpass("Re-enter password: ").strip()
+    confirm = input_password("Re-enter password: ")
 
     if password != confirm:
         print("Passwords do not match.")
@@ -104,7 +104,7 @@ def common_user_signup():
 
 def common_user_signin():
     name = input("Enter your full name: ").strip()
-    password = getpass.getpass("Enter your password: ").strip()
+    password = input_password("Enter your password: ").strip()
     print()
 
     user = load_common_user_data(name)
@@ -119,6 +119,45 @@ def common_user_signin():
 
     print("Invalid name or password.")
     return common_user_signin()
+
+import sys
+import termios
+import tty
+
+def input_password(prompt="Enter password: "):
+    print(prompt, end="", flush=True)
+    password = ""
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+
+    try:
+        tty.setraw(fd)
+        while True:
+            ch = sys.stdin.read(1)
+
+            # Enter key
+            if ch == "\n" or ch == "\r":
+                print()
+                break
+
+            # Backspace
+            if ch == "\x7f":
+                if len(password) > 0:
+                    password = password[:-1]
+                    sys.stdout.write("\b \b")
+                    sys.stdout.flush()
+                continue
+
+            # Normal character
+            password += ch
+            sys.stdout.write("*")
+            sys.stdout.flush()
+
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+
+    return password
+
 
 
 # ---------------------- STREAK MESSAGE ----------------------
@@ -237,11 +276,14 @@ def common_user_menu():
     elif choice == "5":
         view_achievements()
     elif choice == "6":
+        rank.calculate_rank(user)
         rank.display_rank(user)
         if input("View global rankings? (yes/no): ").lower() == "yes":
-            rank.view_global_rankings()
+            rank.view_global_rankings(user)
     elif choice == "7":
         print("Your topics:", ", ".join(user["selected_topics"]))
+        if input("Change topics? (yes/no): ").lower() == "yes":
+            topic_generator()
     elif choice == "8":
         print("Goodbye!🔥")
         return
