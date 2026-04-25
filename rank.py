@@ -7,7 +7,7 @@ def update_user_rank(user):
     return user
 
 def calculate_rank(user):
-    folder = 'users'
+    folder = 'users', 'common_users'
     all_users = []
     #Load all user json files 
     for filename in os.listdir(folder):
@@ -31,6 +31,7 @@ def calculate_rank(user):
 
 def display_rank(user):
     calculate_rank() #Call the calculate_rank function to update user's rank and points before displaying
+    update_user_rank
     print(f"Rank: {user['rank']}")
     print(f"Points: {user['points']}")
     save_user_data(user) #Save user data after updating rank and points
@@ -38,12 +39,13 @@ def display_rank(user):
 def view_global_rankings():
     print("\nGlobal Rankings🏆-------------------:")
     #Load all user data to display global rankings
-    folder = 'users'
+    folders = ['users', 'common_users']
     all_users = []
-    for filename in os.listdir(folder):
-        if filename.endswith('.json'):
-            with open(os.path.join(folder, filename), 'r', encoding='utf-8') as f:
-                all_users.append(json.load(f))
+    for folder in folders:
+        for filename in os.listdir(folder):
+            if filename.endswith('.json'):
+                with open(os.path.join(folder, filename), 'r', encoding='utf-8') as f:
+                    all_users.append(json.load(f))
     #Sort users by points to display global rankings
     all_users.sort(key=lambda x: x['points'], reverse=True)
     for u in all_users:

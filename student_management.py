@@ -1,7 +1,44 @@
 import os, json, datetime, time, random, shutil
-from user_management import load_user_data, save_user_data
 import rank
-import turtle #For flying rocket animation in review mode
+import common_user
+
+import os, json, datetime
+
+os.makedirs("students", exist_ok=True)
+
+def load_student_data(name):
+    filename = f"students/{name.lower()}.json"
+    if os.path.exists(filename):
+        with open(filename, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    new_user = {
+        "name": name,
+        "favourites": [],
+        "reviews": [],
+        "streak": {
+            "current": 0,
+            "longest": 0,
+            "last_date": None,
+            "freeze_remaining": 0
+        },
+        "achievement_progress": {"1": [], "2": [], "3": []},
+        "points": 0,
+        "rank": 0,
+        "student_id": "",
+        "class_code": ""
+    }
+
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(new_user, f, indent=4)
+
+    return new_user
+
+
+def save_student_data(user):
+    filename = f"students/{user['name'].lower()}.json"
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(user, f, indent=4)
 
 # Global user object
 user = None
@@ -23,30 +60,56 @@ def user_info():
     first_name, last_name = name.split(" ", 1)
 
     # 2. Load or create user file FIRST
-    user = load_user_data(name)
+    user = load_student_data(name)
     user["name"] = name
 
     # 3. Ask for class code
     join = input("Enter class code to join (6 digits): ").strip()
 
-    # 4. Generate student ID
-    student_id = (
-        f"S{int(time.time())}"
-        f"{first_name[0].upper()}{last_name[0].upper()}"
-        f"{random.randint(1000, 9999)}"
-    )
-    user["student_id"] = student_id
-    print(f"Your generated student ID is: {student_id}")
+    if join and not join.isdigit(): #If the user entered incorrect class code, ask user to re-enter
+        print("Invalid class code. It should be 6 digits.")
+        join = ""
+    # If user re-entered over 3 times, ask user if they want to switch to common user instead and ask their teacher for the class code later
+    attempts = 0
+
+    while join and not join.isdigit():
+        attempts += 1
+        if attempts >= 3:
+            choice = input("Do you want to continue as a common user instead? (Yes/No): ").strip().lower()
+            if choice == "yes":
+                print("Switching to common user. You can join a class later with the class code provided by your teacher.")
+                common_user.common_user_main()
+            elif choice == "no":
+                print("Class not found. Please ask your teacher for the correct class code and try again.")
+                print("Exiting program.")
+                exit()
+            else:
+                print("Invalid input. Please enter 'Yes' or 'No'.")
+        else:
+            print("Invalid class code. It should be 6 digits.")
+            join = input("Enter class code to join (6 digits): ").strip()
+
+
+
+    # 4. Generate student ID #Only generate student ID if user is new and doesn't have one yet and able to join class successfully, otherwise user can still use the program as a common user without student ID and class features until they can join a class successfully
+    if "student_id" not in user and join:
+        student_id = (
+            f"S{int(time.time())}"
+            f"{first_name[0].upper()}{last_name[0].upper()}"
+            f"{random.randint(1000, 9999)}"
+        )
+        user["student_id"] = student_id
+        print(f"Your generated student ID is: {student_id}")
 
     # 5. Save class code
     user["class_code"] = join
-    save_user_data(user)
+    save_student_data(user)
 
     # 6. Join class AFTER loading user
     if join:
         class_folder = f"classes/{join}"
         if os.path.exists(class_folder):
-            src = f"users/{user['name'].lower()}.json"
+            src = f"students/{user['name'].lower()}.json"
             shutil.copy(src, class_folder)
             print("Joined class successfully!")
         else:
@@ -62,7 +125,7 @@ def user_info():
     if user["streak"]["last_date"] is None:
         print("It looks like this is your first time here! Let's start building your vocabulary!🔥📚")
         user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
-        save_user_data(user)
+        save_student_data(user)
         print(f"current streak: {current} days🔥")
         print(f"longest streak: {longest} days🔥")
         print()
@@ -72,7 +135,7 @@ def user_info():
         user["streak"]["current"] = current
         user["streak"]["longest"] = longest
         user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
-        save_user_data(user)
+        save_student_data(user)
 
         print(f"current streak: {current} days🔥")
         print(f"longest streak: {longest} days🔥")
@@ -105,9 +168,11 @@ def student_menu():
             add_to_favorites(user, word)
 
         elif choice == "3":
-            word = input("Enter the word you want to review: ").lower().strip()
-            # ✅ FIX: pass user into user_review
-            user_review(user, word)
+            if not user["reviews"]:
+                print("You haven't reviewed any words yet. Let's start with today's words!")
+                review_menu(list(vocab.keys())[:5])  # Start with first 5 words for new users
+            else:
+                review_menu(user["reviews"])    
 
         elif choice == "4":
             show_user_info()
@@ -157,61 +222,10 @@ def add_to_favorites(user, word):
             print(f'"{word}" added to your favourites!')
         else:
             print(f'"{word}" is already in your favourites.')
-        save_user_data(user)
+        save_student_data(user)
     else:
         print(f'"{word}" is not in the vocabulary list.')
 
-
-def user_review(user, word):
-    if word not in vocab:
-        print(f'"{word}" is not in the vocabulary list.')
-        return
-
-    reviewed_words = [review["word"] for review in user["reviews"]]
-    if word in reviewed_words:
-        print(f'You have already reviewed "{word}".')
-        return
-
-    definition = input(f'Enter your definition for "{word}": ')
-    print()
-
-    correct_definition = vocab[word]["definition"]
-    print(f'The correct definition of "{word}" is: {correct_definition}')
-    print(vocab[word]["example"])
-    print()
-
-    user["reviews"].append({"word": word, "definition": definition})
-    save_user_data(user)
-
-    check_achievement(user, achievement)
-    print(f'Review added for "{word}".')
-    print()
-
-def flashcard_review(word):
-    print("\nFlashcard Review--------------------:")
-    print("Press Enter to see the definition, then press Enter again to see the example.")
-
-    random.shuffle(word)
-    score = 0
-
-    for w in word:
-        print(f"\nWord: {w}")
-        input("Press Enter to see the definition...")
-        print(f"Definition: {vocab[w]['definition']}")
-        print()
-        input("Press Enter to see the example...")
-        print(f"Example: {vocab[w]['example']}")
-        print()
-
-        while True:
-            correct = input("Did you get it right? (Yes/No): ").lower().strip()
-            if correct in ["yes", "no"]:
-                if correct == "yes":
-                    score += 1
-                break
-            else:
-                print("Please enter 'Yes' or 'No'.")
-    print(f"\nYour flashcard review score: {score}/{len(word)}")
 
 def review_menu(word):
     while True:
@@ -219,8 +233,7 @@ def review_menu(word):
         print("1. Flashcard Review")
         print("2. Quiz Review")
         print("3. Match Mode")
-        print("4. Flying rocket")
-        print("5. Exit Review")
+        print("4. Return to Main Menu")
 
         choice = input("Please select an option (1-5): ").strip()
 
@@ -232,20 +245,17 @@ def review_menu(word):
 
         elif choice == "3":
             match_mode(word)
-
-        elif choice == "4":
-            flying_rocket(word)
         
-        elif choice == "5":
+        elif choice == "4":
             print("Exiting review. Keep up the great work!🔥✨")
             return student_menu()
 
         else:
-            print("Invalid option. Please select 1–5.")
+            print("Invalid option. Please select 1–4.")
 
-#------------DIFFERENT REVIEW MODES (FLASHCARD, QUIZ, MATCH, FLYING ROCKET)------------
+#------------DIFFERENT REVIEW MODES (FLASHCARD, QUIZ, MATCH)------------
 
-import difflib #For fuzzy matching in quiz review
+import difflib #For fuzzy matching in quiz review, less strict than exact match but still gives credit for close answers
 def quiz_review(word):
     print("\nQuiz Review--------------------:")
     score = 0
@@ -270,6 +280,9 @@ def quiz_review(word):
             print(f"The correct definition is: {vocab[w]['definition']}")
 
     print(f"\nYour quiz review score: {score}/{len(word)}")
+    check_achievement(user, achievement)
+    load_student_data(user["name"])  # Reload student data to update achievements and points
+    save_student_data(user)
 
 def match_mode(word):
     print("\nMatch Mode--------------------:")
@@ -333,83 +346,50 @@ def match_mode(word):
     else:
         print("Exiting match mode. Keep up the great work!🔥✨")
         return review_menu(word)
-    
+    rank.calculate_rank(user, correct) #Calculate rank based on match mode score
+    rank.update_user_rank(user, correct) #Update rank based on match mode score
+    check_achievement(user, achievement)
+    load_student_data(user["name"])  # Reload student data to update achievements and points  
+    save_student_data(user)
+
 def clear(): #Cross-platform clear screen
     os.system('cls' if os.name == 'nt' else 'clear')
 
-#___________() FLYING ROCKET ANIMATION USING TURTLE ___________
+def flashcard_review(word):
+    print("\nFlashcard Review--------------------:")
+    print("Press Enter to see the definition, then press Enter again to see the example.")
 
-def pixel_art(t, x, y, colour):
-    t.penup()
-    t.goto(x, y)
-    t.pendown()
-    t.color(colour)
-    t.begin_fill()
-    for _ in range(4):
-        t.forward(20)
-        t.right(90)
-    t.end_fill()
+    random.shuffle(word)
+    score = 0
 
-def rocket__animation_turtle():
-    screen = turtle.Screen()
-    screen.title("FLYING ROCKET!!🚀")
-    screen.bgcolor("black")
+    for w in word:
+        print(f"\nWord: {w}")
+        input("Press Enter to see the definition...")
+        print(f"Definition: {vocab[w]['definition']}")
+        print()
+        input("Press Enter to see the example...")
+        print(f"Example: {vocab[w]['example']}")
+        print()
 
-    t = turtle.Turtle()
-    t.speed(0)
-    t.hideturtle()
-
-    #Starry background
-    star = turtle.Turtle()
-    star.speed(0)
-    star.hideturtle()
-    star.color("white")
-
-    for _ in range(50): #Number of stars
-        x = random.randint(-300, 300)
-        y = random.randint(-250, 250)
-        star.penup()
-        star.goto(x, y)
-        star.dot(random.randint(2, 5)) #Random star size
-
-    
-    #inspo : 🚀
-    rocket_pixels = [
-        ["", "red", ""],
-        ["", "red", ""],
-        ["grey", "grey", "grey"],
-        ["", "blue", ""],
-        ["grey", "grey", "grey"],
-        ["orange", "yellow", "orange"]
-    ]
-
-
-    # Rocket body
-    for i in range(5):
-        pixel_art(t, 0, i*20, "white")
-
-    # Rocket nose
-    pixel_art(t, 0, 100, "red")
-
-    # Rocket fins
-    pixel_art(t, -20, 0, "blue")
-    pixel_art(t, 20, 0, "blue")
-
-    return screen
-
-
-
-
-
-
-
-        
-        
+        while True:
+            correct = input("Did you get it right? (Yes/No): ").lower().strip()
+            if correct in ["yes", "no"]:
+                if correct == "yes":
+                    score += 1
+                break
+            else:
+                print("Please enter 'Yes' or 'No'.")
+    print(f"\nYour flashcard review score: {score}/{len(word)}")
+    rank.calculate_rank(user, score) #Calculate rank based on flashcard review score
+    rank.update_user_rank(user, score) #Update rank based on flashcard review score
+    check_achievement(user, achievement)
+    load_student_data(user["name"])  # Reload student data to update achievements and points
+    save_student_data(user)
 
 # STREAK + ACHIEVEMENTS
 
 def check_streak(name):
-    user = load_user_data(name)
+    user = load_student_data(name)
     today = datetime.date.today()
 
     last_date = user["streak"]["last_date"]
@@ -419,7 +399,7 @@ def check_streak(name):
         user["streak"]["current"] = 1
         user["streak"]["longest"] = max(user["streak"]["longest"], 1)
         user["streak"]["last_date"] = today.strftime("%Y-%m-%d")
-        save_user_data(user)
+        save_student_data(user)
         return user["streak"]["current"], user["streak"]["longest"]
 
     # Otherwise, parse the stored date
@@ -438,9 +418,10 @@ def check_streak(name):
 
     # Save updated date
     user["streak"]["last_date"] = today.strftime("%Y-%m-%d")
-    save_user_data(user)
+    save_student_data(user)
 
     return user["streak"]["current"], user["streak"]["longest"]
+    
 
 
 def check_achievement(user, achievement):
@@ -466,7 +447,7 @@ def check_achievement(user, achievement):
 
         user["achievement_progress"][a_id] = unlocked
 
-    save_user_data(user)
+    save_student_data(user)
 
 
 def star_bar(unlocked_stars):

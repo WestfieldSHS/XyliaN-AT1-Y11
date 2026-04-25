@@ -1,6 +1,6 @@
 import os, json, datetime, time, random, shutil  # Importing necessary modules for file handling, data manipulation, and user input
 
-# IMPORTANT: Only import modules, not specific functions (prevents circular imports)
+# Only import modules, not specific functions (prevents circular imports)
 import rank
 import student_management
 
@@ -44,7 +44,7 @@ def load_common_user_data(name):
 
 
 def save_common_user_data(user):
-    filename = f"users/{user['name'].lower()}.json"
+    filename = f"common_user/{user['name'].lower()}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(user, f)
 
@@ -83,13 +83,10 @@ def common_user_signup():
     country = input("Which country are you from? (optional): ").strip()
     if country:
         user["country"] = country
-        try:
-            with open("country.json", "r", encoding="utf-8") as f:
+        with open("country.json", "r", encoding="utf-8") as f:
                 country_data = json.load(f)
-            if country in country_data:
+        if country in country_data:
                 user["country_flag"] = country_data[country]
-        except:
-            pass
         save_common_user_data(user)
     print() #blank line for better readability
 
@@ -120,9 +117,9 @@ def common_user_signin():
     print("Invalid name or password.")
     return common_user_signin()
 
-import sys
-import termios
-import tty
+import sys #For handling password input without echoing characters to the console
+import termios #For handling password input without echoing characters to the console (Unix-based systems)
+import tty 
 
 def input_password(prompt="Enter password: "):
     print(prompt, end="", flush=True)
@@ -130,6 +127,7 @@ def input_password(prompt="Enter password: "):
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
 
+    #----------Password input with asterisks (Unix-based systems)---------
     try:
         tty.setraw(fd)
         while True:
@@ -269,13 +267,17 @@ def common_user_menu():
         word = input("Enter word to favorite: ").lower().strip()
         student_management.add_to_favorites(user, word)
     elif choice == "3":
-        word = input("Enter word to review: ").lower().strip()
-        student_management.user_review(user, word)
+        if not user["reviews"]:
+            print("You haven't reviewed any words yet. Let's start with today's words!")
+            student_management.review_menu(list(student_management.vocab.keys())[:5])  # Start with first 5 words for new users
+        else:
+            student_management.review_menu(user["reviews"])
     elif choice == "4":
         view_user_information()
     elif choice == "5":
         view_achievements()
     elif choice == "6":
+        
         rank.calculate_rank(user)
         rank.display_rank(user)
         if input("View global rankings? (yes/no): ").lower() == "yes":
