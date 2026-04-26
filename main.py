@@ -2,7 +2,6 @@
 import os, shutil #os and shutil modules for handling file operations related to class joining feature
 import json, datetime, time
 user = None #Initialize user variable to None, it will be assigned after loading user data based on name input
-from user_management import load_user_data, save_user_data #Importing functions to handle user data
 from common_user import common_user_main #Importing the main function for common users to direct them to their menu and features
 from teacher_management import teacher_main
 from student_management import student_main

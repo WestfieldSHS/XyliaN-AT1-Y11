@@ -1,8 +1,6 @@
-import os, json, datetime, time, random, shutil  # Importing necessary modules for file handling, data manipulation, and user input
-
-# Only import modules, not specific functions (prevents circular imports)
-import rank
+import os, json, random, time, sys, termios, tty
 import student_management
+import rank   # safe now — rank.py no longer imports common_user
 
 user = None
 
@@ -11,13 +9,15 @@ user = None
 
 def load_common_user_data(name):
     global user
-    filename = f"users/{name.lower()}.json"
+    filename = f"common_user/{name.lower()}.json"
+
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as f:
             user = json.load(f)
+            user["is_common_user"] = True
             return user
 
-    # Create new user file
+    # Create new common user file
     new_user = {
         "name": name,
         "country": "",
@@ -33,11 +33,12 @@ def load_common_user_data(name):
         "achievement_progress": {"1": [], "2": [], "3": []},
         "points": 0,
         "rank": 0,
-        "user_password": ""
+        "user_password": "",
+        "is_common_user": True
     }
 
     with open(filename, "w", encoding="utf-8") as f:
-        json.dump(new_user, f)
+        json.dump(new_user, f, indent=4)
 
     user = new_user
     return new_user
@@ -46,12 +47,12 @@ def load_common_user_data(name):
 def save_common_user_data(user):
     filename = f"common_user/{user['name'].lower()}.json"
     with open(filename, "w", encoding="utf-8") as f:
-        json.dump(user, f)
+        json.dump(user, f, indent=4)
 
 
 # ---------------------- AUTHENTICATION ----------------------
 
-def authenticate_common_user(name, password):
+def authenticate_common_user():
     existed = input("Do you already have an account? (yes/no): ").strip().lower()
 
     if existed == "yes":
@@ -60,14 +61,14 @@ def authenticate_common_user(name, password):
         return common_user_signup()
     else:
         print("Invalid input.")
-        return authenticate_common_user(name, password)
+        return authenticate_common_user()
 
 
 def common_user_signup():
     print("Let's get you signed up!😊")
     name = input("Enter your full name: ").strip()
+
     password = input_password("Create a password: ")
-    #While user type in password, password needs to convert to asterisks for better security
     confirm = input_password("Re-enter password: ")
 
     if password != confirm:
@@ -83,17 +84,10 @@ def common_user_signup():
     country = input("Which country are you from? (optional): ").strip()
     if country:
         user["country"] = country
-        with open("country.json", "r", encoding="utf-8") as f:
-                country_data = json.load(f)
-        if country in country_data:
-                user["country_flag"] = country_data[country]
         save_common_user_data(user)
-    print() #blank line for better readability
 
     personalised_question()
-    print() #blank line for better readability
     time_choice()
-    print() #blank line for better readability
     topic_generator()
 
     return user
@@ -101,52 +95,45 @@ def common_user_signup():
 
 def common_user_signin():
     name = input("Enter your full name: ").strip()
-    password = input_password("Enter your password: ").strip()
-    print()
+    password = input_password("Enter your password: ")
 
     user = load_common_user_data(name)
 
     if user and user["user_password"] == password:
         print(f"Welcome back, {name}!😊")
-        print()
-        current, longest = student_management.check_streak(name)
+        student_management.check_streak(name)
         streak_message()
-
         return user
 
     print("Invalid name or password.")
     return common_user_signin()
 
-import sys #For handling password input without echoing characters to the console
-import termios #For handling password input without echoing characters to the console (Unix-based systems)
-import tty 
+
+# ---------------------- PASSWORD INPUT ----------------------
 
 def input_password(prompt="Enter password: "):
     print(prompt, end="", flush=True)
     password = ""
+
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
 
-    #----------Password input with asterisks (Unix-based systems)---------
     try:
         tty.setraw(fd)
         while True:
             ch = sys.stdin.read(1)
 
-            # Enter key
-            if ch == "\n" or ch == "\r":
+            if ch in ("\n", "\r"):
                 print()
                 break
 
-            # Backspace
-            if ch == "\x7f":
-                if len(password) > 0:
+            if ch == "\x7f":  # backspace
+                if password:
                     password = password[:-1]
                     sys.stdout.write("\b \b")
                     sys.stdout.flush()
                 continue
 
-            # Normal character
             password += ch
             sys.stdout.write("*")
             sys.stdout.flush()
@@ -157,20 +144,12 @@ def input_password(prompt="Enter password: "):
     return password
 
 
-
 # ---------------------- STREAK MESSAGE ----------------------
 
 def streak_message():
     global user
-    current = user["streak"]["current"]
-    longest = user["streak"]["longest"]
-
-    if user["streak"]["last_date"] is None:
-        print("First time here!🔥")
-    print(f"Current streak: {current} days🔥")
-    print(f"Longest streak: {longest} days🔥")
-
-    return current, longest
+    print(f"Current streak: {user['streak']['current']} days🔥")
+    print(f"Longest streak: {user['streak']['longest']} days🔥")
 
 
 # ---------------------- PERSONALISATION QUESTIONS ----------------------
@@ -184,17 +163,11 @@ def personalised_question():
     print("5. Skip")
 
     choice = input("Enter 1–5: ").strip()
-    responses = {
-        "1": "Great choice!🚀",
-        "2": "Books become more enjoyable with strong vocabulary!📚",
-        "3": "Communication is power!🗣️",
-        "4": "Learning is fun!🎉",
-        "5": "Skipping!"
-    }
-
-    print(responses.get(choice, "Invalid choice"))
-    if choice not in responses:
+    if choice not in ["1", "2", "3", "4", "5"]:
+        print("Invalid choice.")
         return personalised_question()
+
+    print("Great choice!🚀")
 
 
 def time_choice():
@@ -269,7 +242,7 @@ def common_user_menu():
     elif choice == "3":
         if not user["reviews"]:
             print("You haven't reviewed any words yet. Let's start with today's words!")
-            student_management.review_menu(list(student_management.vocab.keys())[:5])  # Start with first 5 words for new users
+            student_management.review_menu(list(student_management.vocab.keys())[:5])
         else:
             student_management.review_menu(user["reviews"])
     elif choice == "4":
@@ -277,11 +250,9 @@ def common_user_menu():
     elif choice == "5":
         view_achievements()
     elif choice == "6":
-        
-        rank.calculate_rank(user)
         rank.display_rank(user)
         if input("View global rankings? (yes/no): ").lower() == "yes":
-            rank.view_global_rankings(user)
+            rank.view_global_rankings()
     elif choice == "7":
         print("Your topics:", ", ".join(user["selected_topics"]))
         if input("Change topics? (yes/no): ").lower() == "yes":
@@ -296,12 +267,12 @@ def common_user_menu():
 
 
 # ---------------------- VOCABULARY ----------------------
+
 def vocab_generator():
     global user
     with open("vocab.json", "r", encoding="utf-8") as f:
         vocab_data = json.load(f)
 
-    # If user skipped topic selection → show random words
     if not user["selected_topics"]:
         print("You didn't select any topics, so here are some random words:")
         print("--------------------")
@@ -312,7 +283,6 @@ def vocab_generator():
             print()
         return
 
-    # Otherwise → filter by selected topics
     selected_vocab = [
         word for word, info in vocab_data.items()
         if info["topic"] in user["selected_topics"]
@@ -327,7 +297,7 @@ def vocab_generator():
         print(f"{word} ({info['type']}): {info['definition']}")
         print(f"Example: {info['example']}")
         print()
- 
+
 
 def view_user_information():
     global user
@@ -349,5 +319,6 @@ def view_achievements():
 
 def common_user_main():
     global user
-    authenticate_common_user("", "")
+    authenticate_common_user()
     common_user_menu()
+

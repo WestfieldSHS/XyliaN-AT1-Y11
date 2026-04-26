@@ -1,53 +1,81 @@
-import json, os
-from student_management import load_user_data, save_user_data
+import os
+import json
 
-#ranking system feature
-def update_user_rank(user):
-    user["rank"] = calculate_rank(user)
-    return user
 
-def calculate_rank(user):
-    folder = 'users', 'common_users'
-    all_users = []
-    #Load all user json files 
-    for filename in os.listdir(folder):
-        if filename.endswith('.json'):
-            with open(os.path.join(folder, filename), 'r', encoding='utf-8') as f:
-                all_users.append(json.load(f))
-    #Calculate points
+#  LOAD ALL USERS (students + common users)
+
+def load_all_users():
+    users = []
+
+    folders = ["students", "common_user"]
+
+    for folder in folders:
+        if not os.path.exists(folder):
+            continue
+
+        for filename in os.listdir(folder):
+            if filename.endswith(".json"):
+                path = os.path.join(folder, filename)
+                with open(path, "r", encoding="utf-8") as f:
+                    user = json.load(f)
+
+                # Mark user type
+                user["is_common_user"] = (folder == "common_user")
+                users.append(user)
+
+    return users
+
+
+#  SAVE USER BACK TO CORRECT FOLDER
+def save_user(user):
+    folder = "common_user" if user.get("is_common_user") else "students"
+    path = f"{folder}/{user['name'].lower()}.json"
+
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(user, f, indent=4)
+
+
+
+#  CALCULATE POINTS + RANK FOR ALL USERS
+def calculate_rank():
+    all_users = load_all_users()
+
+    # Calculate points
     for u in all_users:
-        words_learned = len(u['reviews'])
-        u['points'] = points = words_learned * 10  # Example point calculation
-        if u['streak']['current'] >= 7:
-            points += 50 # Bonus points for a streak of 7 or more
-    #sort users by points to determine rank
-    all_users.sort(key=lambda x: x['points'], reverse=True)
-    #Assign ranks
+        words_learned = len(u.get("reviews", []))
+        points = words_learned * 10
+
+        # Bonus for streak
+        if u.get("streak", {}).get("current", 0) >= 7:
+            points += 50
+
+        u["points"] = points
+
+    # Sort by points (descending)
+    all_users.sort(key=lambda x: x["points"], reverse=True)
+
+    # Assign ranks
     for i, u in enumerate(all_users):
-        u['rank'] = i + 1
-#save updated user data back to their respective json files
-    for u in all_users:
-        save_user_data(u)
+        u["rank"] = i + 1
+        save_user(u)  # Save updated rank + points
 
+    return all_users
+
+
+#  DISPLAY RANK FOR CURRENT USER
 def display_rank(user):
-    calculate_rank() #Call the calculate_rank function to update user's rank and points before displaying
-    update_user_rank
-    print(f"Rank: {user['rank']}")
-    print(f"Points: {user['points']}")
-    save_user_data(user) #Save user data after updating rank and points
+    calculate_rank()  # Update global rankings first
+
+    print("\n🏆 Your Ranking -------------------")
+    print(f"Name: {user['name']}")
+    print(f"Rank: {user.get('rank', 'N/A')}")
+    print(f"Points: {user.get('points', 0)}")
+
+#  VIEW GLOBAL RANKINGS
 
 def view_global_rankings():
-    print("\nGlobal Rankings🏆-------------------:")
-    #Load all user data to display global rankings
-    folders = ['users', 'common_users']
-    all_users = []
-    for folder in folders:
-        for filename in os.listdir(folder):
-            if filename.endswith('.json'):
-                with open(os.path.join(folder, filename), 'r', encoding='utf-8') as f:
-                    all_users.append(json.load(f))
-    #Sort users by points to display global rankings
-    all_users.sort(key=lambda x: x['points'], reverse=True)
+    all_users = calculate_rank()
+
+    print("\n🌍 Global Rankings -------------------")
     for u in all_users:
         print(f"{u['rank']}. {u['name']} - {u['points']} points")
-
