@@ -64,63 +64,87 @@ def user_info():
     user = load_student_data(name)
     user["name"] = name
 
-    join = input("Enter class code to join (6 digits): ").strip()
-
     attempts = 0
-    while join and not join.isalnum():
-        attempts += 1
-        if attempts >= 3:
-            print("Class code invalid too many times. Exiting.")
-            exit()
-        print("Invalid class code. It should be 6 characters (letters/numbers).")
-        join = input("Enter class code to join (6 digits): ").strip()
 
-    # generate student ID if new and joined class
-    if not user.get("student_id") and join:
+    while True:
+        join = input("Enter class code to join (6 characters): ").strip()
+
+        # Validate format
+        if not join or not join.isalnum() or len(join) != 6:
+            attempts += 1
+            print("❌ Invalid class code format. It must be 6 letters/numbers.")
+
+        # Check if class folder exists
+        elif not os.path.exists(f"classes/{join}"):
+            attempts += 1
+            print("❌ Class does not exist. Please ask your teacher for the correct class code.")
+
+        else:
+            # Class exists → now check topic
+            class_info_path = f"classes/{join}/class_info.json"
+            if not os.path.exists(class_info_path):
+                print("❌ This class has not been set up by the teacher yet.")
+                print("Please ask your teacher to set a topic.")
+                attempts += 1
+            else:
+                # Load topic
+                with open(class_info_path, "r", encoding="utf-8") as f:
+                    class_info = json.load(f)
+
+                topic = class_info.get("topic")
+                if not topic:
+                    print("❌ Your teacher has not set a topic for this class yet.")
+                    print("Please ask your teacher to set a topic.")
+                    attempts += 1
+                else:
+                    # VALID CLASS → break loop
+                    break
+
+        # Too many failed attempts → offer switch to common user
+        if attempts >= 3:
+            print("\nYou've entered an invalid class code too many times.")
+            choice = input("Would you like to continue as a common user instead? (yes/no): ").strip().lower()
+
+            if choice == "yes":
+                print("\nSwitching to common user mode...")
+                import common_user
+                common_user.common_user_main()
+                return  # stop student flow entirely
+
+            else:
+                print("\nPlease ask your teacher for the correct class code and try again later.")
+                exit()
+
+    # ---------- VALID CLASS CODE FROM HERE ON ----------
+
+    user["class_code"] = join
+    user["selected_topics"] = [topic]
+
+    # Generate student ID ONLY NOW
+    if not user.get("student_id"):
         student_id = (
             f"S{int(time.time())}"
             f"{first_name[0].upper()}{last_name[0].upper()}"
             f"{random.randint(1000, 9999)}"
         )
         user["student_id"] = student_id
-        print(f"Your generated student ID is: {student_id}")
-
-    user["class_code"] = join
-
-    # inherit topic from class
-    if join:
-        topic = load_class_topic(join)
-        if topic:
-            user["selected_topics"] = [topic]
-        else:
-            user["selected_topics"] = []
-    else:
-        user["selected_topics"] = []
+        print(f"Your student ID is: {student_id}")
 
     save_student_data(user)
 
-    if join:
-        class_folder = f"classes/{join}"
-        if os.path.exists(class_folder):
-            src = f"students/{user['name'].lower()}.json"
-            shutil.copy(src, class_folder)
-            print("Joined class successfully!")
-        else:
-            print("Invalid class code.")
+    # Copy student file into class folder
+    shutil.copy(f"students/{user['name'].lower()}.json", f"classes/{join}")
 
-    print()
-    print(f"Hello, {name}! Let's explore some new words together!😊")
+    print(f"\nWelcome to class {join}, {name}! Topic: {topic} 🎉")
 
+    # Streak logic
     current = user["streak"]["current"]
     longest = user["streak"]["longest"]
 
     if user["streak"]["last_date"] is None:
-        print("It looks like this is your first time here!🔥📚")
+        print("This is your first day!🔥📚")
         user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
         save_student_data(user)
-        print(f"current streak: {current} days🔥")
-        print(f"longest streak: {longest} days🔥")
-        print()
     else:
         current, longest = check_streak(name)
         user["streak"]["current"] = current
@@ -128,12 +152,9 @@ def user_info():
         user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
         save_student_data(user)
 
-        print(f"current streak: {current} days🔥")
-        print(f"longest streak: {longest} days🔥")
-
-        check_achievement(user, achievement)
-        print()
-
+    print(f"Current streak: {current} days🔥")
+    print(f"Longest streak: {longest} days🔥")
+    print()
 
 # ---------- MENU SYSTEM ----------
 
