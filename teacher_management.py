@@ -155,7 +155,8 @@ def create_class(teacher):
     if not os.path.exists(class_info_path):
         class_info = {
             "class_code": class_code,
-            "topic": None
+            "topic": None,
+            "students": [] #Number of students
         }
         with open(class_info_path, "w", encoding="utf-8") as f:
             json.dump(class_info, f, indent=4)
@@ -175,6 +176,32 @@ def view_class_list(teacher):
         topic = load_class_topic(code)
         topic_display = topic if topic else "No topic set"
         print(f"- {code} ({count} students) | Topic: {topic_display}")
+        
+
+def update_class_student_list(class_code, student_name, action="add"):
+    class_info_path = f"classes/{class_code}/class_info.json"
+
+    # Load class info
+    with open(class_info_path, "r", encoding="utf-8") as f:
+        class_info = json.load(f)
+
+    # Ensure "students" list exists
+    if "students" not in class_info:
+        class_info["students"] = []
+
+    # Add or remove student
+    if action == "add":
+        if student_name not in class_info["students"]:
+            class_info["students"].append(student_name)
+
+    elif action == "remove":
+        if student_name in class_info["students"]:
+            class_info["students"].remove(student_name)
+
+    # Save updated file
+    with open(class_info_path, "w", encoding="utf-8") as f:
+        json.dump(class_info, f, indent=4)
+
 
 
 # ---------- CLASS MENU ----------

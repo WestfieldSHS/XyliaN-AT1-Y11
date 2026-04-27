@@ -27,6 +27,3 @@ def role_selection():
 
 #Start the program by calling the welcome_message function
 welcome_message()
-  
-  
-    

@@ -1,6 +1,7 @@
-import os, json, datetime, time, random, shutil, difflib
+import os, json, datetime, time, random, shutil, difflib, sys
 import rank
 from teacher_management import load_class_topic
+import teacher_management
 
 os.makedirs("students", exist_ok=True)
 
@@ -37,9 +38,14 @@ def load_student_data(name):
 
 
 def save_student_data(user):
+    # Prevent saving common users into students/
+    if user.get("is_common_user"):
+        return
+
     filename = f"students/{user['name'].lower()}.json"
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(user, f, indent=4)
+
 
 
 # ---------- GLOBALS ----------
@@ -54,18 +60,15 @@ with open("vocab.json", "r", encoding="utf-8") as f:
 
 
 # ---------- USER LOGIN + CLASS JOIN ----------
-
 def user_info():
     global user
 
     name = input("Enter your full name: ").strip()
     first_name, last_name = name.split(" ", 1)
 
-    user = load_student_data(name)
-    user["name"] = name
-
     attempts = 0
 
+    # -------- CLASS CODE VALIDATION LOOP --------
     while True:
         join = input("Enter class code to join (6 characters): ").strip()
 
@@ -108,12 +111,59 @@ def user_info():
             if choice == "yes":
                 print("\nSwitching to common user mode...")
                 import common_user
+                common_user.load_common_user_data(name)      # <-- IMPORTANT: create common user profile
                 common_user.common_user_main()
-                return  # stop student flow entirely
+                sys.exit()
 
             else:
                 print("\nPlease ask your teacher for the correct class code and try again later.")
                 exit()
+
+    # -------- VALID CLASS CODE FROM HERE ON --------
+
+    # Create student file ONLY NOW
+    user = load_student_data(name)
+
+    user["class_code"] = join
+    user["selected_topics"] = [topic]
+
+    # Generate student ID ONLY NOW
+    if not user.get("student_id"):
+        student_id = (
+            f"S{int(time.time())}"
+            f"{first_name[0].upper()}{last_name[0].upper()}"
+            f"{random.randint(1000, 9999)}"
+        )
+        user["student_id"] = student_id
+        print(f"Your student ID is: {student_id}")
+
+    save_student_data(user)
+    teacher_management.update_class_student_list(join, user["name"], action="add")
+
+
+    # Copy student file into class folder
+    if not user.get("is_common_user"):
+        shutil.copy(f"students/{user['name'].lower()}.json", f"classes/{join}")
+
+    print(f"\nWelcome to class {join}, {name}! Topic: {topic} 🎉")
+
+    # -------- STREAK LOGIC --------
+    current = user["streak"]["current"]
+    longest = user["streak"]["longest"]
+
+    if user["streak"]["last_date"] is None:
+        print("This is your first day!🔥📚")
+        user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
+        save_student_data(user)
+    else:
+        current, longest = check_streak(name)
+        user["streak"]["current"] = current
+        user["streak"]["longest"] = longest
+        user["streak"]["last_date"] = datetime.date.today().strftime("%Y-%m-%d")
+        save_student_data(user)
+
+    print()
+
 
     # ---------- VALID CLASS CODE FROM HERE ON ----------
 
@@ -201,19 +251,31 @@ def student_menu():
 
 
 # ---------- MENU OPTION FUNCTIONS ----------
-
 def show_topic_words():
     global user
+
+    # If teacher hasn't set a topic yet
     if not user["selected_topics"]:
         print("No topic set for your class yet. Showing random words:")
-        for word in random.sample(list(vocab.keys()), min(5, len(vocab))):
+        random_words = random.sample(list(vocab.keys()), min(5, len(vocab)))
+
+        for word in random_words:
             info = vocab[word]
             print(f"{word} ({info['type']}): {info['definition']}")
             print(f"Example: {info['example']}")
             print()
+
+            # Add to review list
+            if word not in user["reviews"]:
+                user["reviews"].append(word)
+
+        save_student_data(user)
         return
 
+    # Teacher-assigned topic
     topic = user["selected_topics"][0]
+
+    # Filter vocab by topic
     filtered = [w for w, info in vocab.items() if info.get("topic") == topic]
 
     if not filtered:
@@ -221,12 +283,21 @@ def show_topic_words():
         return
 
     print(f"Words for topic: {topic}")
-    for word in random.sample(filtered, min(5, len(filtered))):
+
+    # Pick 5 topic words
+    selected_words = random.sample(filtered, min(5, len(filtered)))
+
+    for word in selected_words:
         info = vocab[word]
         print(f"{word} ({info['type']}): {info['definition']}")
         print(f"Example: {info['example']}")
         print()
 
+        # Add to review list (Option C)
+        if word not in user["reviews"]:
+            user["reviews"].append(word)
+
+    save_student_data(user)
 
 def show_user_info():
     print(f"Name: {user['name']}")
