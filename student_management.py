@@ -1,4 +1,4 @@
-import os, json, datetime, time, random, shutil, difflib, sys
+import os, json, datetime, time, random, shutil, difflib, sys, select
 import rank
 from teacher_management import load_class_topic
 import teacher_management
@@ -373,6 +373,44 @@ def quiz_review(word_list):
     check_achievement(user, achievement)
     save_student_data(user)
 
+#---------- MATCH MODE WITH TIMER & SELECTABLE OPTIONS ----------
+def flush_input(): # Clear any existing input in the buffer to prevent accidental key presses from affecting timed input
+    import sys, termios
+    termios.tcflush(sys.stdin, termios.TCIFLUSH)
+
+
+def timed_input(prompt, timeout=10):
+    sys.stdout.write(prompt)
+    sys.stdout.flush()
+
+    start = time.time()
+    user_input = ""
+
+    while True:
+        remaining = timeout - (time.time() - start)
+
+        # countdown display
+        sys.stdout.write(f"\r{prompt} ({remaining:0.1f}s left) {user_input}")
+        sys.stdout.flush()
+
+        if remaining <= 0:
+            sys.stdout.write("\n")
+            sys.stdout.flush()
+
+            return None  # timeout
+
+        # check if user typed something
+        rlist, _, _ = select.select([sys.stdin], [], [], 0.1) # small timeout to allow for countdown updates/ rlist checks
+        if rlist:
+            ch = sys.stdin.read(1)
+
+            if ch in ("\n", "\r"):
+                sys.stdout.write("\n")
+                sys.stdout.flush()
+                return user_input.strip()
+
+            user_input += ch
+
 
 def match_mode(word_list):
     print("\nMatch Mode--------------------:")
@@ -394,9 +432,15 @@ def match_mode(word_list):
         for i, option in enumerate(options):
             print(f"{i+1}. {option}")
 
-        start_time = time.time()
-        answer = input("Your answer (1-4): ").strip()
-        end_time = time.time()
+        flush_input() # Clear input buffer before timed input to prevent accidental key presses from affecting the timer
+        answer = timed_input("Your answer (1-4): ", timeout=10)
+
+        if answer is None:
+            print("\nTime's up!⏰")
+            print(f"The correct definition is: {vocab[w]['definition']}")
+            time.sleep(2)
+            continue
+
 
         if not answer:
             print("\nTime's up!⏰")

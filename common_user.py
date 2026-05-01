@@ -117,10 +117,11 @@ def common_user_signin():
 
 
 # ---------------------- PASSWORD INPUT ----------------------
-
 def input_password(prompt="Enter password: "):
-    print(prompt, end="", flush=True)
-    password = ""
+    sys.stdout.write("\r" + prompt) #Fix backspace issue by writing prompt with carriage return to overwrite previous line
+    sys.stdout.flush()
+
+    pwd = ""   # renamed to avoid shadowing
 
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
@@ -134,21 +135,23 @@ def input_password(prompt="Enter password: "):
                 print()
                 break
 
-            if ch == "\x7f":  # backspace
-                if password:
-                    password = password[:-1]
+            if ch in ("\x7f", "\b"):  # backspace
+                if pwd:
+                    pwd = pwd[:-1]
                     sys.stdout.write("\b \b")
                     sys.stdout.flush()
                 continue
 
-            password += ch
+            pwd += ch
             sys.stdout.write("*")
             sys.stdout.flush()
 
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        sys.stdout.write("\r")
+        sys.stdout.flush()
 
-    return password
+    return pwd
 
 
 # ---------------------- STREAK MESSAGE ----------------------

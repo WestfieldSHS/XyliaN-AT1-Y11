@@ -60,7 +60,7 @@ def teacher_signup():
     first, last = name.split(" ", 1)
 
     educational_institution = input("Enter your educational institution: ").strip()
-    pronouns = input("What would you like us to call you? (Mr./Ms./Mrs./Dr.): ").strip()
+    pronouns = input("What should we call you? (Mr./Ms./Mrs./Dr.): ").strip()
 
     teacher_id = (
         f"T{int(time.time())}"
