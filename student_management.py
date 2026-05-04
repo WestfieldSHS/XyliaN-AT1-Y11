@@ -393,23 +393,24 @@ def timed_input(prompt, timeout=10):
         sys.stdout.write(f"\r{prompt} ({remaining:0.1f}s left) {user_input}")
         sys.stdout.flush()
 
-        if remaining <= 0:
-            sys.stdout.write("\n")
-            sys.stdout.flush()
-
-            return None  # timeout
-
-        # check if user typed something
+          # check if user typed something
         rlist, _, _ = select.select([sys.stdin], [], [], 0.1) # small timeout to allow for countdown updates/ rlist checks
         if rlist:
             ch = sys.stdin.read(1)
-
+            #Check if user pressed Enter
             if ch in ("\n", "\r"):
                 sys.stdout.write("\n")
                 sys.stdout.flush()
                 return user_input.strip()
 
             user_input += ch
+
+        #Check if time is up
+        if remaining <= 0:
+            sys.stdout.write("\n")
+            sys.stdout.flush()
+
+            return None  # timeout
 
 
 def match_mode(word_list):
