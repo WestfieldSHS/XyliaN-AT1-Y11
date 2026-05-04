@@ -289,6 +289,22 @@ def set_class_topic(teacher):
 
 def view_students(teacher):
     class_code = input("Enter class code: ").strip()
+    student_info = input("Do you want to see student info? (yes/no): ").strip().lower()
+    if student_info == "yes":
+        student_name = input("Enter student name: ").strip()
+        student_file = f"students/{student_name.lower()}.json"
+        if os.path.exists(student_file):
+            with open(student_file, "r", encoding="utf-8") as f:
+                student_data = json.load(f)
+            print(f"\nStudent Name: {student_data['name']}")
+            print(f"Points: {student_data['points']}")
+            print(f"Rank: {student_data['rank']}")
+            print(f"Streak: {student_data['streak']['current']} (Longest: {student_data['streak']['longest']})")
+            print(f"Favourites: {', '.join(student_data['favourites']) if student_data['favourites'] else 'None'}")
+            print(f"Reviews: {len(student_data['reviews'])} reviews")
+        else:
+            print("Student not found.")
+        return
 
     if class_code not in teacher["classes"]:
         print("Class not found.")
