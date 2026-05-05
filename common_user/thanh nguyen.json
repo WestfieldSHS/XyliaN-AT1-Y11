@@ -1,0 +1,30 @@
+{
+    "name": "Thanh Nguyen",
+    "country": "Vietnam",
+    "selected_topics": [
+        "Humanities and Social Science"
+    ],
+    "favourites": [],
+    "reviews": [
+        "growthspurt",
+        "apocalypse",
+        "abstract",
+        "ambivalent",
+        "euphoria"
+    ],
+    "streak": {
+        "current": 0,
+        "longest": 0,
+        "last_date": null,
+        "freeze_remaining": 0
+    },
+    "achievement_progress": {
+        "1": [],
+        "2": [],
+        "3": []
+    },
+    "points": 50,
+    "rank": 1,
+    "user_password": "TRa12345",
+    "is_common_user": true
+}

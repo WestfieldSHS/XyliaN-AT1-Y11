@@ -371,47 +371,51 @@ def quiz_review(word_list):
 
     print(f"\nYour quiz review score: {score}/{len(word_list)}")
     check_achievement(user, achievement)
+    rank.calculate_rank()  # Update global rankings after quiz review
     save_student_data(user)
 
 #---------- MATCH MODE WITH TIMER & SELECTABLE OPTIONS ----------
-def flush_input(): # Clear any existing input in the buffer to prevent accidental key presses from affecting timed input
-    import sys, termios
-    termios.tcflush(sys.stdin, termios.TCIFLUSH)
-
-
 def timed_input(prompt, timeout=10):
-    sys.stdout.write(prompt)
+    print(prompt)
     sys.stdout.flush()
 
     start = time.time()
     user_input = ""
+    typing_started = False  # NEW FLAG
 
     while True:
         remaining = timeout - (time.time() - start)
 
-        # countdown display
-        sys.stdout.write(f"\r{prompt} ({remaining:0.1f}s left) {user_input}")
-        sys.stdout.flush()
+        # Only show timer if user hasn't started typing
+        if not typing_started:
+            sys.stdout.write(f"\r⏳ {remaining:0.1f}s left ")
+            sys.stdout.flush()
 
-          # check if user typed something
-        rlist, _, _ = select.select([sys.stdin], [], [], 0.1) # small timeout to allow for countdown updates/ rlist checks
+        # Check input
+        rlist, _, _ = select.select([sys.stdin], [], [], 0)
         if rlist:
             ch = sys.stdin.read(1)
-            #Check if user pressed Enter
+            typing_started = True  # STOP TIMER IMMEDIATELY
+
             if ch in ("\n", "\r"):
-                sys.stdout.write("\n")
+                # Clear timer line
+                sys.stdout.write("\r" + " " * 50 + "\r")
                 sys.stdout.flush()
                 return user_input.strip()
 
             user_input += ch
+            continue
 
-        #Check if time is up
+        # Timeout
         if remaining <= 0:
-            sys.stdout.write("\n")
+            sys.stdout.write("\r" + " " * 50 + "\r")
             sys.stdout.flush()
+            return None
 
-            return None  # timeout
-
+        time.sleep(0.05)
+def flush_input():
+    while sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
+        sys.stdin.read(1)
 
 def match_mode(word_list):
     print("\nMatch Mode--------------------:")
@@ -465,6 +469,7 @@ def match_mode(word_list):
     print(f"\nYour match mode score: {correct}/{len(words_list)}")
     time.sleep(2)
     check_achievement(user, achievement)
+    rank.calculate_rank()  # Update global rankings after match mode
     save_student_data(user)
 
 
@@ -499,6 +504,7 @@ def flashcard_review(word_list):
 
     print(f"\nYour flashcard review score: {score}/{len(word_list)}")
     check_achievement(user, achievement)
+    rank.calculate_rank()  # Update global rankings after flashcard review
     save_student_data(user)
 
 
