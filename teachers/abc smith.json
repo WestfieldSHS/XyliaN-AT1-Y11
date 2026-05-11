@@ -1,0 +1,12 @@
+{
+    "name": "ABC Smith",
+    "teacher_id": "T1778390541AS4089",
+    "pronouns": "Mr",
+    "educational_institution": "Westfield Sports HS",
+    "class_codes": [
+        "YDPE4C"
+    ],
+    "classes": {
+        "YDPE4C": []
+    }
+}

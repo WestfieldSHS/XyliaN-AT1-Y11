@@ -1,9 +1,9 @@
-import os, json, random, time, sys, termios, tty
+import os, json, random, time, sys, termios, tty #termios and tty are for secure password input without echoing characters to the console, which is important for user privacy and security when they create or enter their password. This way, when a user types their password, it won't be visible on the screen, providing a safer experience. These modules allow us to manipulate terminal settings to achieve this functionality.
 import student_management
-import rank   # safe now — rank.py no longer imports common_user
+import rank   # safe — rank.py no longer imports common_user
 
 # Ensure folder exists
-os.makedirs("common_user", exist_ok=True)
+os.makedirs("common_user", exist_ok=True) 
 
 user = None
 
@@ -13,8 +13,8 @@ with open("achievement.json", "r", encoding="utf-8") as f:
 # ---------------------- USER DATA HANDLING ----------------------
 
 def load_common_user_data(name):
-    global user
-    filename = f"common_user/{name.lower()}.json"
+    global user # global is needed to ensure that when we load the user data, it updates the global user variable that is used throughout the program to keep track of the current user's information and progress. This way, when we call load_common_user_data during signup or signin, it will set the global user variable to the loaded user data, allowing us to access and modify it in other functions like topic_generator, view_user_information, etc. without needing to pass the user object around as a parameter. It keeps the user's data consistent and accessible across different parts of the program after they have signed up or signed in.
+    filename = f"common_user/{name.lower()}.json" # '/' is for folder separation, so all common user files are stored in the "common_user" folder. The filename is based on the user's name in lowercase to ensure consistency and avoid issues with case sensitivity when loading user data. For example, if a user named "Alice Smith" signs up, their data will be stored in "common_user/alice smith.json". When they sign in, the program will look for this file to load their data.
 
     if os.path.exists(filename):
         with open(filename, "r", encoding="utf-8") as f:
@@ -39,7 +39,7 @@ def load_common_user_data(name):
         "points": 0,
         "rank": 0,
         "user_password": "",
-        "is_common_user": True
+        "is_common_user": True # Flag to indicate this is a common user, which can be used in other parts of the program to differentiate between common users and students if needed
     }
 
     with open(filename, "w", encoding="utf-8") as f:
@@ -116,18 +116,17 @@ def common_user_signin():
     return common_user_signin()
 
 
-# ---------------------- PASSWORD INPUT ----------------------
-def input_password(prompt="Enter password: "):
-    sys.stdout.write("\r" + prompt) #Fix backspace issue by writing prompt with carriage return to overwrite previous line
-    sys.stdout.flush()
+# ---------------------- PASSWORD INPUT ---------------------- #Previously have incorrect indentation for this section, which caused the password input to not work properly. The function was defined inside the common_user_signin function, which meant it wasn't accessible outside of that function and caused errors when we tried to call it from common_user_signup. By moving it out to the global scope, we ensure that both signup and signin can use the same secure password input function without any issues.
+def input_password(prompt="Enter password: "): #Previously used getpass(), but it cause confusion for users because they couldn't see anything to check if they typed anything.
+    sys.stdout.flush() # Ensure prompt is displayed before input starts
 
-    pwd = ""   # renamed to avoid shadowing
+    pwd = ""   # renamed to avoid shadowing #previously named password, but renamed to pwd to avoid shadowing the variable named password in common_user_signup and common_user_signin, which could lead to confusion or bugs if we accidentally use the wrong variable. Using a different name like pwd makes it clear that this variable is specifically for storing the password input in this function, and it won't interfere with any other variables named password in the broader scope of the program.
 
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
+    fd = sys.stdin.fileno() # Get file descriptor for stdin to manipulate terminal settings
+    old_settings = termios.tcgetattr(fd) # Save terminal settings to restore later
 
-    try:
-        tty.setraw(fd)
+    try: #try loop to ensure that even if something goes wrong during password input, we can restore the terminal settings in the finally block to prevent leaving the terminal in an unusable state (e.g. if an exception occurs while reading input, we still want to make sure the terminal settings are restored so the user can continue using their terminal normally)
+        tty.setraw(fd) #setraw(fd) puts the terminal into raw mode, which allows us to read input character by character without waiting for a newline. This is essential for implementing the password input functionality where we want to read each character as it's typed and display an asterisk instead of the actual character. By using raw mode, we can capture each keystroke immediately and provide real-time feedback to the user while they enter their password, enhancing the user experience and security of the password input process.
         while True:
             ch = sys.stdin.read(1)
 
@@ -140,15 +139,15 @@ def input_password(prompt="Enter password: "):
                     pwd = pwd[:-1]
                     sys.stdout.write("\b \b")
                     sys.stdout.flush()
-                continue
+                continue # Skip adding backspace character to password and move to next iteration
 
-            pwd += ch
-            sys.stdout.write("*")
-            sys.stdout.flush()
+            pwd += ch # Add character to password string
+            sys.stdout.write("*") # Print asterisk for each character typed to provide feedback without showing the actual password - mimicking the common password input behavior.
+            sys.stdout.flush() # Flush output to ensure asterisk is displayed immediately after each character is typed, providing real-time feedback to the user as they enter their password.
 
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-        sys.stdout.write("\r")
+    finally: #finally block to ensure terminal settings are restored no matter what happens in the try block, which is crucial for maintaining a good user experience and preventing issues with the terminal after password input
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings) # Restore terminal settings
+        sys.stdout.write("\r") # Move to start of line after password input
         sys.stdout.flush()
 
     return pwd
@@ -290,7 +289,7 @@ def vocab_generator():
         print("You didn't select any topics, so here are some random words:")
         print("--------------------")
 
-        random_words = random.sample(list(vocab_data.keys()), min(5, len(vocab_data)))
+        random_words = random.sample(list(vocab_data.keys()), min(5, len(vocab_data))) #random.sample to get 5 random words from vocab_data keys, min to avoid error if less than 5 words
 
         for word in random_words:
             info = vocab_data[word]
@@ -299,7 +298,7 @@ def vocab_generator():
 
             # Add to review list (Option C)
             if word not in user["reviews"]:
-                user["reviews"].append(word)
+                user["reviews"].append(word) #append new words to review list, but only if not already there to avoid duplicates
 
         save_common_user_data(user)
         return
@@ -314,7 +313,7 @@ def vocab_generator():
         print("No words found for your selected topics.")
         return
 
-    random.shuffle(selected_vocab)
+    random.shuffle(selected_vocab) #shuffle to randomize order of words each time
 
     print("Here are your words:")
     print("--------------------")

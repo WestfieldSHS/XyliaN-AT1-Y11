@@ -46,16 +46,16 @@ def calculate_rank():
         points = words_learned * 10
 
         # Bonus for streak
-        if u.get("streak", {}).get("current", 0) >= 7:
+        if u.get("streak", {}).get("current", 0) >= 7: #if the user has a current streak of 7 or more days, they receive a bonus of 50 points.
             points += 50
 
         u["points"] = points
 
     # Sort by points (descending)
-    all_users.sort(key=lambda x: x["points"], reverse=True)
+    all_users.sort(key=lambda x: x["points"], reverse=True) #key=lambda to sort fuction, x is each user, sort by points, reverse for descending order
 
     # Assign ranks
-    for i, u in enumerate(all_users):
+    for i, u in enumerate(all_users): #enumerate gives us the index (i) and the user (u) for each user in the sorted list
         u["rank"] = i + 1
         save_user(u)  # Save updated rank + points
 

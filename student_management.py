@@ -1,9 +1,9 @@
-import os, json, datetime, time, random, shutil, difflib, sys, select
+import os, json, datetime, time, random, shutil, difflib, sys, select #shutill for copying student files into class folders, difflib for lenient grading in quiz review, select for non-blocking input in match mode timer
 import rank
 from teacher_management import load_class_topic
 import teacher_management
 
-os.makedirs("students", exist_ok=True)
+os.makedirs("students", exist_ok=True) #It creates a folder named students if it doesn’t already exist. exist_ok true prevent crashing if the student already exist
 
 # ---------- LOAD & SAVE STUDENT DATA ----------
 
@@ -32,7 +32,7 @@ def load_student_data(name):
     }
 
     with open(filename, "w", encoding="utf-8") as f:
-        json.dump(new_user, f, indent=4)
+        json.dump(new_user, f, indent=4) 
 
     return new_user
 
@@ -138,7 +138,7 @@ def user_info():
         print(f"Your student ID is: {student_id}")
 
     save_student_data(user)
-    teacher_management.update_class_student_list(join, user["name"], action="add")
+    teacher_management.update_class_student_list(join, user["name"], action="add") #add student to class list in teacher management
 
 
     # Copy student file into class folder
@@ -165,7 +165,7 @@ def user_info():
     print()
 
 
-    # ---------- VALID CLASS CODE FROM HERE ON ----------
+    # ---------- VALID CLASS CODE -----------
 
     user["class_code"] = join
     user["selected_topics"] = [topic]
@@ -276,7 +276,7 @@ def show_topic_words():
     topic = user["selected_topics"][0]
 
     # Filter vocab by topic
-    filtered = [w for w, info in vocab.items() if info.get("topic") == topic]
+    filtered = [w for w, info in vocab.items() if info.get("topic") == topic] #items() gives us both the word (w) and its info (info), so we can check the topic in the info dictionary
 
     if not filtered:
         print(f"No words found for topic: {topic}.")
@@ -356,7 +356,7 @@ def quiz_review(word_list):
         answer = input("Enter the definition: ").strip().lower()
         correct_answer = vocab[w]["definition"].lower()
 
-        similarity = difflib.SequenceMatcher(None, answer, correct_answer).ratio()
+        similarity = difflib.SequenceMatcher(None, answer, correct_answer).ratio() #divide into ratio of 0 to 1, for less strict grading (e.g. if student misses a word or has minor wording differences, they can still get partial credit)
 
         if similarity >= 0.8:
             print("Correct!🔥")
@@ -387,12 +387,12 @@ def timed_input(prompt, timeout=10):
         remaining = timeout - (time.time() - start)
 
         # Only show timer if user hasn't started typing
-        if not typing_started:
-            sys.stdout.write(f"\r⏳ {remaining:0.1f}s left ")
+        if not typing_started: #sys.stdout.write() allows us to overwrite the same line with the timer countdown, and sys.stdout.flush() ensures it updates immediately without waiting for a newline
+            sys.stdout.write(f"\r⏳ {remaining:0.1f}s left ") #write() instead of print() to stay on same line, flush to ensure it shows immediately
             sys.stdout.flush()
 
         # Check input
-        rlist, _, _ = select.select([sys.stdin], [], [], 0)
+        rlist, _, _ = select.select([sys.stdin], [], [], 0) # Non-blocking check for input #select() checks if there's input available on sys.stdin without blocking the program. If the user has started typing, we set typing_started to True, which stops the timer from displaying and allows the user to finish their input without time pressure.
         if rlist:
             ch = sys.stdin.read(1)
             typing_started = True  # STOP TIMER IMMEDIATELY
@@ -413,14 +413,15 @@ def timed_input(prompt, timeout=10):
             return None
 
         time.sleep(0.05)
+        
 def flush_input():
-    while sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
-        sys.stdin.read(1)
+    while sys.stdin in select.select([sys.stdin], [], [], 0)[0]: #flush input is for clearing the input buffer before timed input, so that accidental key presses don't affect the timer
+        sys.stdin.read(1) # Read and discard any input that's currently in the buffer, ensuring that the timed input starts with a clean slate and isn't affected by any previous key presses or inputs that the user may have entered before the timer started. This is especially important in match mode, where we want to ensure that the timer accurately reflects the time remaining for each question without being prematurely triggered by leftover input.
 
 def match_mode(word_list):
     print("\nMatch Mode--------------------:")
     print("Match the words with their definitions. You have 10 seconds per word.⏰")
-    time.sleep(2)
+    time.sleep(2) # Brief pause before starting match mode
 
     words_list = word_list[:]
     definitions_list = [vocab[w]['definition'] for w in words_list]
@@ -428,13 +429,13 @@ def match_mode(word_list):
     correct = 0
 
     for w in words_list:
-        clear()
+        clear() #Clear answer from previous question for better UX in match mode
         print(f"\nWord: {w}")
         options = random.sample(definitions_list, min(4, len(definitions_list)))
         if vocab[w]['definition'] not in options:
             options[random.randint(0, len(options)-1)] = vocab[w]['definition']
 
-        for i, option in enumerate(options):
+        for i, option in enumerate(options): #enumerate options for user to select #enumerate() gives us both the index (i) and the option itself, so we can display numbered options for the user to choose from
             print(f"{i+1}. {option}")
 
         flush_input() # Clear input buffer before timed input to prevent accidental key presses from affecting the timer
@@ -453,7 +454,7 @@ def match_mode(word_list):
             time.sleep(2)
             continue
 
-        if answer.isdigit() and 1 <= int(answer) <= len(options):
+        if answer.isdigit() and 1 <= int(answer) <= len(options): #isdigit() checks if the input is a number, and we also check if it's within the range of available options
             if options[int(answer)-1] == vocab[w]['definition']:
                 print("Correct!🔥")
                 correct += 1
@@ -474,7 +475,7 @@ def match_mode(word_list):
 
 
 def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear') # Clear console for better UX in match mode
 
 
 def flashcard_review(word_list):
@@ -493,12 +494,12 @@ def flashcard_review(word_list):
         print(f"Example: {vocab[w]['example']}")
         print()
 
-        while True:
+        while True: #while loop to validate user input for whether they got the flashcard right or not, ensuring they enter either "yes" or "no"
             correct = input("Did you get it right? (Yes/No): ").lower().strip()
             if correct in ["yes", "no"]:
                 if correct == "yes":
                     score += 1
-                break
+                break #break out of the loop if valid input, otherwise keep asking until they enter "yes" or "no"
             else:
                 print("Please enter 'Yes' or 'No'.")
 
@@ -516,9 +517,9 @@ def check_streak(name):
 
     last_date = u["streak"]["last_date"]
 
-    if last_date is None:
+    if last_date is None: #none means user is logging in for the first time, so we start their streak at 1 and set last_date to today. We also update longest streak to 1 if it was previously 0, but if they already had a longest streak from before (e.g. they had a streak of 5 but took a break and are now back), we don't want to reset their longest streak to 1, so we use max() to keep the higher value between the existing longest streak and 1.
         u["streak"]["current"] = 1
-        u["streak"]["longest"] = max(u["streak"]["longest"], 1)
+        u["streak"]["longest"] = max(u["streak"]["longest"], 1) # If it's the user's first day, set current streak to 1 and update longest streak if necessary #max() ensures that if the user already has a longest streak of 5 from before, it won't reset to 1 on their first day back
         u["streak"]["last_date"] = today.strftime("%Y-%m-%d")
         save_student_data(u)
         return u["streak"]["current"], u["streak"]["longest"]
@@ -526,8 +527,8 @@ def check_streak(name):
     last_date = datetime.datetime.strptime(last_date, "%Y-%m-%d").date()
 
     if today == last_date:
-        pass
-    elif today == last_date + datetime.timedelta(days=1):
+        pass # User log in on the same day, doesn't affect streak
+    elif today == last_date + datetime.timedelta(days=1): #delta(days=1) checks if today is exactly one day after the last date, which means the user has maintained their streak
         u["streak"]["current"] += 1
     else:
         u["streak"]["current"] = 1
@@ -541,7 +542,7 @@ def check_streak(name):
 
 def check_achievement(u, achievement_data):
     for a in achievement_data["achievements"]:
-        a_id = str(a["id"])
+        a_id = str(a["id"]) 
         unlocked = u["achievement_progress"].get(a_id, [])
 
         for star_info in a["stars"]:
@@ -563,7 +564,7 @@ def check_achievement(u, achievement_data):
     save_student_data(u)
 
 
-def star_bar(unlocked_stars):
+def star_bar(unlocked_stars): #unlocked star is from achievement_progress in student data, which is a list of the stars they've unlocked for that achievement
     return "★" * len(unlocked_stars) + "☆" * (5 - len(unlocked_stars))
 
 

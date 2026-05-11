@@ -1,16 +1,16 @@
 {
     "name": "Thanh Nguyen",
-    "country": "Vietnam",
+    "country": "",
     "selected_topics": [
-        "Humanities and Social Science"
+        "Science and Technology"
     ],
     "favourites": [],
     "reviews": [
-        "growthspurt",
-        "apocalypse",
-        "abstract",
-        "ambivalent",
-        "euphoria"
+        "technological era",
+        "television programme",
+        "hoist",
+        "structure",
+        "energy-efficient"
     ],
     "streak": {
         "current": 0,
@@ -23,8 +23,8 @@
         "2": [],
         "3": []
     },
-    "points": 50,
-    "rank": 1,
+    "points": 0,
+    "rank": 0,
     "user_password": "TRa12345",
     "is_common_user": true
 }
